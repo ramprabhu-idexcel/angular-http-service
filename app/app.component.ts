@@ -19,25 +19,25 @@ export class AppComponent {
     public foods;
     public books;
     public movies;
-
+    
     public food_name;
 
     constructor(private _demoService: DemoService) { }
 
     ngOnInit() {
-        this.getFoods();
-        this.getBooksMovies();
+      this.getFoods();
+      this.getBooksMovies();
     }
 
     getFoods() {
-        this._demoService.getFoods().subscribe(
-            // the first argument is a function which runs on success
-                data => { this.foods = data },
-            // the second argument is a function which runs on error
-                err => console.error(err),
-            // the third argument is a function which runs on completion
-            () => console.log('done loading foods')
-        );
+      this._demoService.getFoods().subscribe(
+          // the first argument is a function which runs on success
+              data => { this.foods = data },
+          // the second argument is a function which runs on error
+              err => console.error(err),
+          // the third argument is a function which runs on completion
+          () => console.log('done loading foods')
+      );
     }
 
     getBooksMovies(){
