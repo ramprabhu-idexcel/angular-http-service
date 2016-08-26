@@ -7,8 +7,14 @@
         <button (click)="deleteFood(food)">Delete</button>
     </li>
 </ul>
-    <p>Create a new food: <input type="text" name="food_name" [(ngModel)]="food_name">
-        <button (click)="createFood(food_name)">Save</button>
-    </p>
-    <h2>Books and Movies</h2>
-    <h3>Books</h3>
+<p>Create a new food: <input type="text" name="food_name" [(ngModel)]="food_name">
+    <button (click)="createFood(food_name)">Save</button>
+</p>
+<h2>Books and Movies</h2>
+<li *ngFor="let book of books">
+  <input type="text" name="book-title" [(ngModel)]="book.title">
+</li>
+<li *ngFor="let movie of movies">
+  <input type="text" name="movie-title" [(ngModel)]="movie.title">
+</li>
+<h3>Books</h3>

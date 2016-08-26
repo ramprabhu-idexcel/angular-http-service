@@ -1,3 +1,4 @@
+/* http://www.metaltoad.com/blog/angular-2-http-observables */
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18,6 +19,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         this.getFoods();
+        this.getBooksMovies();
     };
     AppComponent.prototype.getFoods = function () {
         var _this = this;
@@ -28,6 +30,13 @@ var AppComponent = (function () {
         function (err) { return console.error(err); }, 
         // the third argument is a function which runs on completion
         function () { return console.log('done loading foods'); });
+    };
+    AppComponent.prototype.getBooksMovies = function () {
+        var _this = this;
+        this._demoService.getBooksMovies().subscribe(function (data) {
+            _this.books = data[0];
+            _this.movies = data[1];
+        });
     };
     AppComponent = __decorate([
         core_1.Component({

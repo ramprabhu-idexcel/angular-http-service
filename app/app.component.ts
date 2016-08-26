@@ -1,3 +1,5 @@
+/* http://www.metaltoad.com/blog/angular-2-http-observables */
+
 import { Component } from '@angular/core';
 
 import { DemoService } from './demo.service';
@@ -24,6 +26,7 @@ export class AppComponent {
 
     ngOnInit() {
         this.getFoods();
+        this.getBooksMovies();
     }
 
     getFoods() {
@@ -35,6 +38,15 @@ export class AppComponent {
             // the third argument is a function which runs on completion
             () => console.log('done loading foods')
         );
+    }
+
+    getBooksMovies(){
+      this._demoService.getBooksMovies().subscribe(
+        data => {
+        this.books = data[0]
+        this.movies = data[1]
+      }
+      );
     }
 
 }

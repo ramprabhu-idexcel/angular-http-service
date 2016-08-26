@@ -17,4 +17,20 @@ export class DemoService {
         return this.http.get('/app/food.json').map((res:Response) => res.json());
     }
 
+    getBooksMovies() {
+      var data = Observable.forkJoin(
+          this.http.get('/app/books.json').map((res:Response) => res.json()),
+          this.http.get('/app/movies.json').map((res:Response) => res.json())
+      )
+      return data;
+    }
+
+    createFood(food) {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = JSON.stringify(food);
+      // Note: This is only an example. The following API call will fail because there is no actual API to talk to.
+      return this.http.post('/api/food/', body, headers).map((res:Response) => res.json());
+    }
+
 }

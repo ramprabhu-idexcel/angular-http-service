@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
+var Rx_1 = require('rxjs/Rx');
 require('rxjs/add/operator/map');
 var DemoService = (function () {
     function DemoService(http) {
@@ -18,6 +19,17 @@ var DemoService = (function () {
     // Uses http.get() to load a single JSON file
     DemoService.prototype.getFoods = function () {
         return this.http.get('/app/food.json').map(function (res) { return res.json(); });
+    };
+    DemoService.prototype.getBooksMovies = function () {
+        var data = Rx_1.Observable.forkJoin(this.http.get('/app/books.json').map(function (res) { return res.json(); }), this.http.get('/app/movies.json').map(function (res) { return res.json(); }));
+        return data;
+    };
+    DemoService.prototype.createFood = function (food) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify(food);
+        // Note: This is only an example. The following API call will fail because there is no actual API to talk to.
+        return this.http.post('/api/food/', body, headers).map(function (res) { return res.json(); });
     };
     DemoService = __decorate([
         core_1.Injectable(), 
