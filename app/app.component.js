@@ -10,41 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var demo_service_1 = require('./demo.service');
 // Import and use below directive
 var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
+require('rxjs/add/operator/map');
 var AppComponent = (function () {
-    function AppComponent(_demoService) {
-        this._demoService = _demoService;
+    function AppComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.getFoods();
-        this.getBooksMovies();
-    };
-    AppComponent.prototype.getFoods = function () {
-        var _this = this;
-        this._demoService.getFoods().subscribe(
-        // the first argument is a function which runs on success
-        function (data) { _this.foods = data; }, 
-        // the second argument is a function which runs on error
-        function (err) { return console.error(err); }, 
-        // the third argument is a function which runs on completion
-        function () { return console.log('done loading foods'); });
-    };
-    AppComponent.prototype.getBooksMovies = function () {
-        var _this = this;
-        this._demoService.getBooksMovies().subscribe(function (data) {
-            _this.books = data[0];
-            _this.movies = data[1];
-        });
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'demo-app',
             templateUrl: 'app/app.component.html',
-            directives: [forms_1.FORM_DIRECTIVES]
+            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [demo_service_1.DemoService])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());

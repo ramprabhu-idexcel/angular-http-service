@@ -33,6 +33,10 @@
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
-    "typings":"^1.0.4"
+    "typings":"^1.0.4",
+    "webpack": "^1.4.13",
+    "webpack-dev-server": "^1.6.6"
   }
 }
+
+

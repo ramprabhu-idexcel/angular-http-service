@@ -1,0 +1,18 @@
+
+> angular2-api-calls@1.0.0 start /home/ramprabhu/projects/angular2/angular-http-service
+> tsc && concurrently "npm run tsc:w" "npm run lite" 
+
+[1] 
+[1] > angular2-api-calls@1.0.0 lite /home/ramprabhu/projects/angular2/angular-http-service
+[1] > lite-server
+[1] 
+[0] 
+[0] > angular2-api-calls@1.0.0 tsc:w /home/ramprabhu/projects/angular2/angular-http-service
+[0] > tsc -w
+[0] 
+[1] Did not detect a `bs-config.json` or `bs-config.js` override file. Using lite-server defaults...
+[1] ** browser-sync config **
+[1] { injectChanges: false,
+[1]   files: [ './**/*.{html,htm,css,js}' ],
+[1]   watchOptions: { ignored: 'node_modules' },
+[1]   server: { baseDir: './', middleware: [ [Function], [Function] ] } }

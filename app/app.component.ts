@@ -2,51 +2,19 @@
 
 import { Component } from '@angular/core';
 
-import { DemoService } from './demo.service';
-
-import { Observable } from 'rxjs/Rx';
-
 // Import and use below directive
 import { FORM_DIRECTIVES } from '@angular/forms';
+
+import { ROUTER_DIRECTIVES } from '@angular/router';
+
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'demo-app',
     templateUrl: 'app/app.component.html',
-    directives: [FORM_DIRECTIVES]
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 
 export class AppComponent {
-    public foods;
-    public books;
-    public movies;
-    
-    public food_name;
-
-    constructor(private _demoService: DemoService) { }
-
-    ngOnInit() {
-      this.getFoods();
-      this.getBooksMovies();
-    }
-
-    getFoods() {
-      this._demoService.getFoods().subscribe(
-          // the first argument is a function which runs on success
-              data => { this.foods = data },
-          // the second argument is a function which runs on error
-              err => console.error(err),
-          // the third argument is a function which runs on completion
-          () => console.log('done loading foods')
-      );
-    }
-
-    getBooksMovies(){
-      this._demoService.getBooksMovies().subscribe(
-        data => {
-        this.books = data[0]
-        this.movies = data[1]
-      }
-      );
-    }
 
 }
