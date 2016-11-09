@@ -18,7 +18,7 @@ var UserService = (function () {
     }
     // Uses http.get() to load a single JSON file
     UserService.prototype.getUsers = function () {
-        return this.http.get(this.apiURL + "api.json").map(function (res) { return res.json(); });
+        return this.http.get(this.apiURL + "users").map(function (res) { return res.json(); });
     };
     UserService.prototype.createUser = function (food) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

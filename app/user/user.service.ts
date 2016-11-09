@@ -15,7 +15,7 @@ export class UserService {
     public apiURL = "http://localhost:4000/"
     // Uses http.get() to load a single JSON file
     getUsers() {     
-      return this.http.get(this.apiURL+"api.json").map((res:Response) => res.json());
+      return this.http.get(this.apiURL+"users").map((res:Response) => res.json());
     }
     
     createUser(food) {
