@@ -9,7 +9,7 @@ import { AboutComponent } from './home/about.component';
 
 
 export const routes: RouterConfig = [
-  { path: 'user', 
+  { path: 'users',
     component: UserComponent 
   },    
   {

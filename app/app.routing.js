@@ -4,7 +4,7 @@ var user_component_1 = require('./user/user.component');
 var home_component_1 = require('./home/home.component');
 var about_component_1 = require('./home/about.component');
 exports.routes = [
-    { path: 'user',
+    { path: 'users',
         component: user_component_1.UserComponent
     },
     {

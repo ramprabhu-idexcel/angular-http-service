@@ -20,7 +20,9 @@ import { UserService } from './user.service'
 export class UserComponent implements OnInit{
 	constructor(private _userService: UserService) { }
 	public users: Array<any>;
-  public editing: boolean = false;
+    public editing: boolean = false;
+    public viewUsers : boolean = true;
+    public addUser: boolean = false;
  
  	ngOnInit(){
  		this.getUsers();

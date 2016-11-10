@@ -1556,3 +1556,7 @@ a:hover.back-login	{
 .submit-login:hover	{
     background: url(app/images/login/submit_login.gif) no-repeat 0 -29px;
 }
+
+#content-table td {
+    font-size: 12px !important;
+}
