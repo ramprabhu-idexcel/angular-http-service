@@ -18,6 +18,8 @@ var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
         this.editing = false;
+        this.viewUsers = true;
+        this.addUser = false;
     }
     UserComponent.prototype.ngOnInit = function () {
         this.getUsers();
