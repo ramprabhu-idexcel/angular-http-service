@@ -14,15 +14,31 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var user_service_1 = require('./user.service');
+var ng2_pagination_1 = require('ng2-pagination');
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
         this.editing = false;
         this.viewUsers = true;
         this.addUser = false;
+        //set pagination value
+        this.maxSize = 7;
+        this.directionLinks = true;
+        this.autoHide = false;
+        this.config = {
+            id: 'advanced',
+            itemsPerPage: 10,
+            currentPage: 1
+        };
     }
     UserComponent.prototype.ngOnInit = function () {
         this.getUsers();
+    };
+    /*
+     set list of alerts per page
+     */
+    UserComponent.prototype.onPageChange = function (number) {
+        this.config.currentPage = number;
     };
     UserComponent.prototype.getUsers = function () {
         var _this = this;
@@ -48,7 +64,9 @@ var UserComponent = (function () {
     UserComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/user/user.component.html',
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
+            pipes: [ng2_pagination_1.PaginatePipe],
+            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, ng2_pagination_1.PaginationControlsCmp],
+            providers: [ng2_pagination_1.PaginationService]
         }), 
         __metadata('design:paramtypes', [user_service_1.UserService])
     ], UserComponent);

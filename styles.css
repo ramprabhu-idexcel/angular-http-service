@@ -456,7 +456,7 @@ th.line-left	{
     line-height: 0;
 }
 #related-act-bottom	{
-    background: url(../images/forms/bg_related_act.gif) no-repeat bottom;
+    background: url(app/images/forms/bg_related_act.gif) no-repeat bottom;
     font-size: 0px;
     line-height: 0;
 }
@@ -484,7 +484,7 @@ ul.greyarrow	{
     list-style-type: none;
 }
 ul.greyarrow li	{
-    background: url(../images/forms/icon_list_arrow.gif) no-repeat 0 5px;
+    background: url(app/images/forms/icon_list_arrow.gif) no-repeat 0 5px;
     line-height: 18px;
     padding: 0 0 0 12px;
 }
@@ -496,7 +496,7 @@ ul.greyarrow li a:hover	{
     text-decoration: underline;
 }
 .lines-dotted-short	{
-    background: url(../images/forms/lines_dotted_short.gif) no-repeat 0px 14px;
+    background: url(app/images/forms/lines_dotted_short.gif) no-repeat 0px 14px;
     font-size: 0px;
     height: 28px;
     line-height: 0;
@@ -1558,5 +1558,9 @@ a:hover.back-login	{
 }
 
 #content-table td {
+    font-size: 12px !important;
+}
+
+#content-table-inner th{
     font-size: 12px !important;
 }

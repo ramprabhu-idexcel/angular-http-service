@@ -6,6 +6,8 @@ import { HomeComponent } from  './home/home.component';
 
 import { AboutComponent } from './home/about.component';
 
+import { UserCreateComponent } from './user/user-create.component';
+
 
 
 export const routes: RouterConfig = [
@@ -19,6 +21,10 @@ export const routes: RouterConfig = [
   {
     path: 'about',
     component: AboutComponent 
+  },
+  {
+    path: 'user/create',
+    component: UserCreateComponent
   }
 ];
 

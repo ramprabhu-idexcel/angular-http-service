@@ -105,12 +105,12 @@
 
 				<div class="nav-divider">&nbsp;</div>
 
-				<ul class="current"><li><a href="#nogo"><b>Users</b><!--[if IE 7]><!--></a><!--<![endif]-->
+				<ul class="current"><li><a [routerLink]="['/users']"><b>Users</b><!--[if IE 7]><!--></a><!--<![endif]-->
 					<!--[if lte IE 6]><table><tr><td><![endif]-->
 					<div class="select_sub show">
 						<ul class="sub">
-							<li><a [routerLink]="['/users']">View all users</a></li>
-							<li class="sub_show"><a href="#nogo">Add user</a></li>
+							<li class="sub_show"><a [routerLink]="['/users']">View all users</a></li>
+							<li><a [routerLink]="['/user/create']">Add user</a></li>
 							<li><a href="#nogo">Delete users</a></li>
 						</ul>
 					</div>
@@ -185,7 +185,7 @@
 
 		<!--  start page-heading -->
 		<div id="page-heading">
-			<h1>Add product</h1>
+			<h1>Add user</h1>
 		</div>
 		<!-- end page-heading -->
 
@@ -206,51 +206,6 @@
 						<!--  start table-content  -->
 						<div id="table-content">
 
-							<!--  start message-yellow -->
-							<div id="message-yellow">
-								<table border="0" width="100%" cellpadding="0" cellspacing="0">
-									<tr>
-										<td class="yellow-left">You have a new message. <a href="">Go to Inbox.</a></td>
-										<td class="yellow-right"><a class="close-yellow"><img src="app/images/table/icon_close_yellow.gif"   alt="" /></a></td>
-									</tr>
-								</table>
-							</div>
-							<!--  end message-yellow -->
-
-							<!--  start message-red -->
-							<div id="message-red">
-								<table border="0" width="100%" cellpadding="0" cellspacing="0">
-									<tr>
-										<td class="red-left">Error. <a href="">Please try again.</a></td>
-										<td class="red-right"><a class="close-red"><img src="app/images/table/icon_close_red.gif"   alt="" /></a></td>
-									</tr>
-								</table>
-							</div>
-							<!--  end message-red -->
-
-							<!--  start message-blue -->
-							<div id="message-blue">
-								<table border="0" width="100%" cellpadding="0" cellspacing="0">
-									<tr>
-										<td class="blue-left">Welcome back. <a href="">View my account.</a> </td>
-										<td class="blue-right"><a class="close-blue"><img src="app/images/table/icon_close_blue.gif"   alt="" /></a></td>
-									</tr>
-								</table>
-							</div>
-							<!--  end message-blue -->
-
-							<!--  start message-green -->
-							<div id="message-green">
-								<table border="0" width="100%" cellpadding="0" cellspacing="0">
-									<tr>
-										<td class="green-left">Product added sucessfully. <a href="">Add new one.</a></td>
-										<td class="green-right"><a class="close-green"><img src="app/images/table/icon_close_green.gif"   alt="" /></a></td>
-									</tr>
-								</table>
-							</div>
-							<!--  end message-green -->
-
-
 							<!--  start product-table ..................................................................................... -->
 							<form id="mainform" action="">
 								<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
@@ -265,7 +220,7 @@
 										<th class="table-header-options line-left"><a href="">Created At</a></th>
 										<th class="table-header-options line-left"><a href="">Options</a></th>
 									</tr>
-									<tr *ngFor="let user of users; let i = index;" [class]= "((i%2) == 0) ? '' : 'alternate-row'">
+									<tr *ngFor="let user of users | paginate: config; let i = index;" [class]= "((i%2) == 0) ? '' : 'alternate-row'">
 										<td><input  type="checkbox"/></td>
 										<td>{{ user.first_name }}</td>
 										<td>{{ user.last_name }}</td>
@@ -300,23 +255,11 @@
 
 						<!--  start paging..................................................... -->
 						<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
-							<tr>
-								<td>
-									<a href="" class="page-far-left"></a>
-									<a href="" class="page-left"></a>
-									<div id="page-info">Page <strong>1</strong> / 15</div>
-									<a href="" class="page-right"></a>
-									<a href="" class="page-far-right"></a>
-								</td>
-								<td>
-									<select  class="styledselect_pages">
-										<option value="">Number of rows</option>
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
-									</select>
-								</td>
-							</tr>
+							<pagination-controls [id]="config.id"
+												 [maxSize]="maxSize"
+												 [directionLinks]="directionLinks"
+												 [autoHide]="autoHide"
+												 (pageChange)="onPageChange($event)"></pagination-controls>
 						</table>
 						<!--  end paging................ -->
 
