@@ -12,21 +12,30 @@ var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
 require('rxjs/add/operator/map');
 var UserService = (function () {
-    function UserService(http) {
-        this.http = http;
+    function UserService(_http) {
+        this._http = _http;
         this.apiURL = "http://localhost:4000/";
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.options = new http_1.RequestOptions({ headers: this.headers });
     }
-    // Uses http.get() to load a single JSON file
+    /*
+     * Get all users
+     */
     UserService.prototype.getUsers = function () {
-        return this.http.get(this.apiURL + "users").map(function (res) { return res.json(); });
+        return this._http.get(this.apiURL + "users").map(function (res) { return res.json(); });
     };
-    UserService.prototype.createUser = function (food) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        var body = JSON.stringify({ name: food });
-        //var creds = "username=" + "ram" + "&password=" + "prabhu";
-        // Note: This is only an example. The following API call will fail because there is no actual API to talk to.
-        return this.http.post('http://localhost:4000/api/food/', body, headers).map(function (res) { return res.json(); });
+    /*
+     * Create a new user
+     */
+    UserService.prototype.createUser = function (json) {
+        return this._http.post(this.apiURL + 'users', json, this.options).map(function (res) { return res.json(); });
+    };
+    /*
+     * Authentication
+     */
+    UserService.prototype.validateUser = function (json) {
+        console.log("coming");
+        return this._http.post(this.apiURL + 'users/validate', json, this.options).map(function (res) { return res.json(); });
     };
     UserService = __decorate([
         core_1.Injectable(), 

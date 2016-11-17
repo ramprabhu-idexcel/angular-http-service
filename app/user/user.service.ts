@@ -9,22 +9,36 @@ import 'rxjs/add/operator/map';
 @Injectable()
 
 export class UserService {
-    constructor(private http:Http) {      
+    private headers;
+    private options;
+
+    constructor(private _http:Http) {
+        this.headers = new Headers({ 'Content-Type': 'application/json' });
+        this.options = new RequestOptions({ headers: this.headers });
     }
 
-    public apiURL = "http://localhost:4000/"
-    // Uses http.get() to load a single JSON file
-    getUsers() {     
-      return this.http.get(this.apiURL+"users").map((res:Response) => res.json());
+    public apiURL = "http://localhost:4000/";
+
+    /*
+     * Get all users
+     */
+    getUsers() {
+      return this._http.get(this.apiURL+"users").map((res:Response) => res.json());
     }
     
-    createUser(food) {
-      let headers = new Headers({'Content-Type': 'application/json'});
-      let options = new RequestOptions({headers: headers});
-      let body = JSON.stringify({name: food});
-      //var creds = "username=" + "ram" + "&password=" + "prabhu";
-      // Note: This is only an example. The following API call will fail because there is no actual API to talk to.
-      return this.http.post('http://localhost:4000/api/food/', body, headers).map((res:Response) => res.json());
+    /*
+     * Create a new user
+     */
+    createUser(json) {
+        return this._http.post(this.apiURL+'users', json, this.options).map((res:Response) => res.json());
+    }
+
+    /*
+     * Authentication
+     */
+    validateUser(json){
+        console.log("coming");
+        return this._http.post(this.apiURL+'users/validate', json, this.options).map((res:Response) => res.json());
     }
 }
 

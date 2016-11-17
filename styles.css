@@ -1564,3 +1564,33 @@ a:hover.back-login	{
 #content-table-inner th{
     font-size: 12px !important;
 }
+
+#login-inner th{
+    font-size: 12px !important;
+ }
+
+.inp-form,.form-textarea {
+    border: 1px solid #ccc !important;
+    border-radius: 5px;
+}
+
+.inp-form-error {
+    border: 1px solid #ce2700 !important;
+    border-radius: 5px;
+}
+
+.inp-form {
+    height: 30px;
+}
+
+.login-inp {
+    border: 1px !important;
+    border-radius: 5px;
+    height: 35px;
+    width: 220px;
+}
+
+#loginbox td {
+    font-size: 12px !important;
+}
+

@@ -8,6 +8,8 @@ import { AboutComponent } from './home/about.component';
 
 import { UserCreateComponent } from './user/user-create.component';
 
+import { LoginComponent } from './authenticate/login.component';
+
 
 
 export const routes: RouterConfig = [
@@ -25,6 +27,14 @@ export const routes: RouterConfig = [
   {
     path: 'user/create',
     component: UserCreateComponent
+  },
+  { path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
 ];
 
