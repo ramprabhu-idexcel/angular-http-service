@@ -37,7 +37,7 @@ export class UserService {
      * Delete users
      */
     deleteUsers(json){
-        return this._http.delete(this.apiURL+'/api/users/delete_all', json).map((res:Response) => res.json());
+        return this._http.post(this.apiURL+'/api/users/delete_all', json, this.options).map((res:Response) => res.json());
     }
 }
 

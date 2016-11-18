@@ -34,6 +34,7 @@ export class UserComponent implements OnInit{
     };
 
     private user_ids: Array = [];
+    public messageBlue: boolean = false;
  
  	ngOnInit(){
         console.log(localStorage.getItem('currentUser'));
@@ -62,16 +63,36 @@ export class UserComponent implements OnInit{
     /*
      * Delete users
      */
-    deleteUsers(){
-        console.log("Coming++++++++++");
-        $.blockUI();
-        var json = JSON.stringify({ user_ids: this.user_ids });
-        console.log(json);
-        this._userService.deleteUsers(json).subscribe(
+    deleteUsers(){   
+        var result = confirm("Are you sure want to delete?");  
+        if(result && this.user_ids.length != 0){
+            $.blockUI();
+            var json = JSON.stringify({ user_ids: this.user_ids });           
+            this._userService.deleteUsers(json).subscribe(
                 data => { this.users = data },
                 err => console.error(err),
             () => $.unblockUI()
-        );
+            );
+        }  
+        else{
+            this.messageBlue = true;
+        }         
+    }
+
+    /*
+     * Delete single user
+     */
+    deleteUser(id){   
+        var result = confirm("Are you sure want to delete?");  
+        if(result){
+            $.blockUI();
+            var json = JSON.stringify({ user_ids: id });           
+            this._userService.deleteUsers(json).subscribe(
+                data => { this.users = data },
+                err => console.error(err),
+            () => $.unblockUI()
+            );
+        }           
     }
 
     /*

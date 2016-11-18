@@ -216,6 +216,15 @@
 								</table>
 							</div>
 
+							<div id="message-blue" *ngIf="messageBlue">
+								<table border="0" width="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="blue-left">Please select at least one row.</td>
+										<td class="blue-right"><a class="close-blue"><img src="app/images/table/icon_close_blue.gif" alt="" /></a></td>
+									</tr>
+								</table>
+							</div>
+
 							<!--  start product-table ..................................................................................... -->
 							<form id="mainform" action="">
 								<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
@@ -240,7 +249,7 @@
 										<td>{{ user.phone }}</td>
 										<td>{{ user.created_at }}</td>
 										<td class="options-width">
-											<a href="" title="delete" class="icon-2 info-tooltip"></a>
+											<a title="delete" class="icon-2 info-tooltip" (click)="deleteUser(user.id)"></a>
 											<a href="" title="Edit" class="icon-3 info-tooltip"></a>
 											<a href="" title="Edit" class="icon-4 info-tooltip"></a>
 											<a href="" title="Edit" class="icon-5 info-tooltip"></a>

@@ -31,6 +31,7 @@ var UserComponent = (function () {
             currentPage: 1
         };
         this.user_ids = [];
+        this.messageBlue = false;
     }
     UserComponent.prototype.ngOnInit = function () {
         console.log(localStorage.getItem('currentUser'));
@@ -55,11 +56,27 @@ var UserComponent = (function () {
      */
     UserComponent.prototype.deleteUsers = function () {
         var _this = this;
-        console.log("Coming++++++++++");
-        $.blockUI();
-        var json = JSON.stringify({ user_ids: this.user_ids });
-        console.log(json);
-        this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
+        var result = confirm("Are you sure want to delete?");
+        if (result && this.user_ids.length != 0) {
+            $.blockUI();
+            var json = JSON.stringify({ user_ids: this.user_ids });
+            this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
+        }
+        else {
+            this.messageBlue = true;
+        }
+    };
+    /*
+     * Delete single user
+     */
+    UserComponent.prototype.deleteUser = function (id) {
+        var _this = this;
+        var result = confirm("Are you sure want to delete?");
+        if (result) {
+            $.blockUI();
+            var json = JSON.stringify({ user_ids: id });
+            this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
+        }
     };
     /*
      * Select/Unselect users from the list

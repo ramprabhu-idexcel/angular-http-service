@@ -34,7 +34,7 @@ var UserService = (function () {
      * Delete users
      */
     UserService.prototype.deleteUsers = function (json) {
-        return this._http.delete(this.apiURL + '/api/users/delete_all', json).map(function (res) { return res.json(); });
+        return this._http.post(this.apiURL + '/api/users/delete_all', json, this.options).map(function (res) { return res.json(); });
     };
     UserService = __decorate([
         core_1.Injectable(), 
