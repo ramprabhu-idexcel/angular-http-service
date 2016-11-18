@@ -22,6 +22,10 @@
 
         <!--  start login-inner -->
         <div id="login-inner">
+            <div id="login-error">
+                <div *ngIf="error" class="alert alert-danger" style="color: red">{{error}}</div>
+            </div>
+
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <th style="color: #161616;">Username</th>

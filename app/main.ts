@@ -8,6 +8,10 @@ import { DemoService } from './home/demo.service'
 
 import { UserService } from './user/user.service'
 
+import { AuthGuard } from './_guards/index';
+
+import { AuthenticationService } from './authenticate/authentication.service';
+
 import { Config } from './config/config'
 
 import { provide } from "@angular/core";
@@ -18,6 +22,8 @@ bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     DemoService,
     UserService,
+    AuthenticationService,
+    AuthGuard,
     Config,
     APP_ROUTER_PROVIDERS
 ]).catch(err => console.error(err));

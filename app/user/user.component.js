@@ -30,8 +30,10 @@ var UserComponent = (function () {
             itemsPerPage: 10,
             currentPage: 1
         };
+        this.user_ids = [];
     }
     UserComponent.prototype.ngOnInit = function () {
+        console.log(localStorage.getItem('currentUser'));
         this.getUsers();
     };
     /*
@@ -40,26 +42,40 @@ var UserComponent = (function () {
     UserComponent.prototype.onPageChange = function (number) {
         this.config.currentPage = number;
     };
+    /*
+     * Collect users
+     */
     UserComponent.prototype.getUsers = function () {
         var _this = this;
-        this._userService.getUsers().subscribe(
-        // the first argument is a function which runs on success
-        function (data) { _this.users = _this.findUsers(data); }, 
-        // the second argument is a function which runs on error
-        function (err) { return console.error(err); }, 
-        // the third argument is a function which runs on completion
-        function () { return console.log(_this.users); });
+        $.blockUI();
+        this._userService.getUsers().subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
     };
-    UserComponent.prototype.findUsers = function (data) {
-        this.users = data;
-        return this.users;
+    /*
+     * Delete users
+     */
+    UserComponent.prototype.deleteUsers = function () {
+        var _this = this;
+        console.log("Coming++++++++++");
+        $.blockUI();
+        var json = JSON.stringify({ user_ids: this.user_ids });
+        console.log(json);
+        this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
     };
-    UserComponent.prototype.userLists = function () {
-        return this.users;
-    };
-    UserComponent.prototype.editUser = function (user) {
-        this.editing = true;
-        console.log(user);
+    /*
+     * Select/Unselect users from the list
+     */
+    UserComponent.prototype.onChange = function (userId, flag) {
+        if (flag) {
+            this.user_ids.push(userId);
+        }
+        else {
+            var index = this.user_ids.indexOf(userId);
+            if (index > -1) {
+                this.user_ids.splice(index, 1);
+            }
+        }
+        console.log("UserIDS " + this.user_ids);
+        return this.user_ids;
     };
     UserComponent = __decorate([
         core_1.Component({

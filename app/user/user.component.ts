@@ -32,8 +32,11 @@ export class UserComponent implements OnInit{
         itemsPerPage: 10,
         currentPage: 1
     };
+
+    private user_ids: Array = [];
  
  	ngOnInit(){
+        console.log(localStorage.getItem('currentUser'));
  		this.getUsers();
 	}
 
@@ -44,30 +47,47 @@ export class UserComponent implements OnInit{
         this.config.currentPage = number;
     }
 
-	getUsers() {
-      this._userService.getUsers().subscribe(
-          // the first argument is a function which runs on success
-              data => { this.users = this.findUsers(data) },
-          // the second argument is a function which runs on error
-              err => console.error(err),
-          // the third argument is a function which runs on completion
-          () => console.log(this.users)
-      );      
+	/*
+	 * Collect users
+	 */
+    getUsers() {
+        $.blockUI();
+        this._userService.getUsers().subscribe(
+            data => { this.users = data },
+            err => console.error(err),
+            () => $.unblockUI()
+        );
     }
 
+    /*
+     * Delete users
+     */
+    deleteUsers(){
+        console.log("Coming++++++++++");
+        $.blockUI();
+        var json = JSON.stringify({ user_ids: this.user_ids });
+        console.log(json);
+        this._userService.deleteUsers(json).subscribe(
+                data => { this.users = data },
+                err => console.error(err),
+            () => $.unblockUI()
+        );
+    }
 
-  findUsers(data){
-     this.users = data;
-     return this.users;
-  }
-
-  userLists(){
-    return this.users;
-  }  
-
-  editUser(user){
-    this.editing = true;
-    console.log(user);
-  }
-
+    /*
+     * Select/Unselect users from the list
+     */
+    onChange(userId,flag){
+        if(flag){
+            this.user_ids.push(userId);
+        }
+        else{
+            var index = this.user_ids.indexOf(userId);
+            if (index > -1) {
+                this.user_ids.splice(index, 1);
+            }
+        }
+        console.log("UserIDS "+this.user_ids);
+        return this.user_ids;
+    }
 }

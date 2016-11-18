@@ -14,7 +14,7 @@ require('rxjs/add/operator/map');
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
-        this.apiURL = "http://localhost:4000/";
+        this.apiURL = "http://localhost:4000";
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.options = new http_1.RequestOptions({ headers: this.headers });
     }
@@ -22,20 +22,19 @@ var UserService = (function () {
      * Get all users
      */
     UserService.prototype.getUsers = function () {
-        return this._http.get(this.apiURL + "users").map(function (res) { return res.json(); });
+        return this._http.get(this.apiURL + "/api/users").map(function (res) { return res.json(); });
     };
     /*
      * Create a new user
      */
     UserService.prototype.createUser = function (json) {
-        return this._http.post(this.apiURL + 'users', json, this.options).map(function (res) { return res.json(); });
+        return this._http.post(this.apiURL + '/api/users', json, this.options).map(function (res) { return res.json(); });
     };
     /*
-     * Authentication
+     * Delete users
      */
-    UserService.prototype.validateUser = function (json) {
-        console.log("coming");
-        return this._http.post(this.apiURL + 'users/validate', json, this.options).map(function (res) { return res.json(); });
+    UserService.prototype.deleteUsers = function (json) {
+        return this._http.delete(this.apiURL + '/api/users/delete_all', json).map(function (res) { return res.json(); });
     };
     UserService = __decorate([
         core_1.Injectable(), 

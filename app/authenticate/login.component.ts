@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import { UserService } from '../user/user.service'
+import { AuthenticationService } from './authentication.service';
 
 @Component({
     templateUrl: 'app/authenticate/login.component.html',
@@ -12,10 +12,16 @@ import { UserService } from '../user/user.service'
 })
 
 export class LoginComponent implements OnInit{
-    constructor(private _userService: UserService, private _router:Router) { }
+    constructor(private _authService: AuthenticationService, private _router:Router) { }
     private userName: string;
     private password: string;
-    private jsonString;
+    loading = false;
+    error = '';
+
+    ngOnInit() {
+        // reset login status
+        this._authService.logout();
+    }
 
     /*
      * Set user name
@@ -36,23 +42,26 @@ export class LoginComponent implements OnInit{
      */
     OnSubmit() {
         if(this.userName && this.password){
-            this.authenticate();
+            this.login();
         }
         else{
-
+            this.error = 'Username or password is incorrect';
         }
     }
 
     /*
      * Authenticate user
      */
-    authenticate(){
-        this.jsonString = JSON.stringify({ "user": { "username": this.userName, "password": this.password }});
-        this._userService
-            .validateUser(this.jsonString)
-            .subscribe(response => console.log(response),
-                error => console.log(error)
-            );
+    login() {
+        this.loading = true;
+        this._authService.login(this.userName, this.password)
+            .subscribe(result => {
+                if (result === true) {
+                    this._router.navigate(['/users']);
+                } else {
+                    this.error = 'Username or password is incorrect';
+                    this.loading = false;
+                }
+            });
     }
-
 }

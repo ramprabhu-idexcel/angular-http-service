@@ -17,28 +17,27 @@ export class UserService {
         this.options = new RequestOptions({ headers: this.headers });
     }
 
-    public apiURL = "http://localhost:4000/";
+    public apiURL = "http://localhost:4000";
 
     /*
      * Get all users
      */
     getUsers() {
-      return this._http.get(this.apiURL+"users").map((res:Response) => res.json());
+      return this._http.get(this.apiURL+"/api/users").map((res:Response) => res.json());
     }
     
     /*
      * Create a new user
      */
     createUser(json) {
-        return this._http.post(this.apiURL+'users', json, this.options).map((res:Response) => res.json());
+        return this._http.post(this.apiURL+'/api/users', json, this.options).map((res:Response) => res.json());
     }
 
     /*
-     * Authentication
+     * Delete users
      */
-    validateUser(json){
-        console.log("coming");
-        return this._http.post(this.apiURL+'users/validate', json, this.options).map((res:Response) => res.json());
+    deleteUsers(json){
+        return this._http.delete(this.apiURL+'/api/users/delete_all', json).map((res:Response) => res.json());
     }
 }
 

@@ -10,24 +10,10 @@ import { UserCreateComponent } from './user/user-create.component';
 
 import { LoginComponent } from './authenticate/login.component';
 
+import { AuthGuard } from './_guards/index';
 
 
 export const routes: RouterConfig = [
-  { path: 'users',
-    component: UserComponent 
-  },    
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent 
-  },
-  {
-    path: 'user/create',
-    component: UserCreateComponent
-  },
   { path: 'login',
     component: LoginComponent
   },
@@ -35,6 +21,25 @@ export const routes: RouterConfig = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  { path: 'users',
+    component: UserComponent,
+    canActivate: [AuthGuard]
+  },    
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/create',
+    component: UserCreateComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

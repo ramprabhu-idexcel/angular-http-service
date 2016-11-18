@@ -12,12 +12,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
-var user_service_1 = require('../user/user.service');
+var authentication_service_1 = require('./authentication.service');
 var LoginComponent = (function () {
-    function LoginComponent(_userService, _router) {
-        this._userService = _userService;
+    function LoginComponent(_authService, _router) {
+        this._authService = _authService;
         this._router = _router;
+        this.loading = false;
+        this.error = '';
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        // reset login status
+        this._authService.logout();
+    };
     /*
      * Set user name
      */
@@ -35,26 +41,35 @@ var LoginComponent = (function () {
      */
     LoginComponent.prototype.OnSubmit = function () {
         if (this.userName && this.password) {
-            this.authenticate();
+            this.login();
         }
         else {
+            this.error = 'Username or password is incorrect';
         }
     };
     /*
      * Authenticate user
      */
-    LoginComponent.prototype.authenticate = function () {
-        this.jsonString = JSON.stringify({ "user": { "username": this.userName, "password": this.password } });
-        this._userService
-            .validateUser(this.jsonString)
-            .subscribe(function (response) { return console.log(response); }, function (error) { return console.log(error); });
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        this.loading = true;
+        this._authService.login(this.userName, this.password)
+            .subscribe(function (result) {
+            if (result === true) {
+                _this._router.navigate(['/users']);
+            }
+            else {
+                _this.error = 'Username or password is incorrect';
+                _this.loading = false;
+            }
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/authenticate/login.component.html',
             directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

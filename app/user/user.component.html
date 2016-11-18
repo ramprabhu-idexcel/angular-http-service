@@ -59,7 +59,7 @@
 			<div class="nav-divider">&nbsp;</div>
 			<div class="showhide-account"><img src="app/images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
 			<div class="nav-divider">&nbsp;</div>
-			<a href="" id="logout"><img src="app/images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+			<a [routerLink]="['/login']" id="logout"><img src="app/images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>
 
 			<!--  start account-content -->
@@ -111,7 +111,7 @@
 						<ul class="sub">
 							<li class="sub_show"><a [routerLink]="['/users']">View all users</a></li>
 							<li><a [routerLink]="['/user/create']">Add user</a></li>
-							<li><a href="#nogo">Delete users</a></li>
+							<li><a (click)="deleteUsers()">Delete users</a></li>
 						</ul>
 					</div>
 					<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -231,7 +231,7 @@
 										<th class="table-header-options line-left"><a href="">Options</a></th>
 									</tr>
 									<tr *ngFor="let user of users | paginate: config; let i = index;" [class]= "((i%2) == 0) ? '' : 'alternate-row'">
-										<td><input  type="checkbox"/></td>
+										<td><input type="checkbox" id="{{user.id}}" #user_id [checked]=false (change)="onChange(user_id.id,user_id.checked)" /></td>
 										<td>{{ user.first_name }}</td>
 										<td>{{ user.last_name }}</td>
 										<td>{{ user.email }}</td>
