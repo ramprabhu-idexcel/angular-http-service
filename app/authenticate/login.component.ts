@@ -64,4 +64,13 @@ export class LoginComponent implements OnInit{
                 }
             });
     }
+
+    /*
+     * Press enter to submit button
+     */
+    keyDownFunction(event) {
+        if(event.keyCode == 13) {
+            this.OnSubmit();
+        }
+    }
 }

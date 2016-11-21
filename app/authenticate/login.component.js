@@ -64,6 +64,14 @@ var LoginComponent = (function () {
             }
         });
     };
+    /*
+     * Press enter to submit button
+     */
+    LoginComponent.prototype.keyDownFunction = function (event) {
+        if (event.keyCode == 13) {
+            this.OnSubmit();
+        }
+    };
     LoginComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/authenticate/login.component.html',

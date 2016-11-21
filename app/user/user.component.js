@@ -56,11 +56,14 @@ var UserComponent = (function () {
      */
     UserComponent.prototype.deleteUsers = function () {
         var _this = this;
-        var result = confirm("Are you sure want to delete?");
-        if (result && this.user_ids.length != 0) {
-            $.blockUI();
-            var json = JSON.stringify({ user_ids: this.user_ids });
-            this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
+        if (this.user_ids.length != 0) {
+            var result = confirm("Are you sure want to delete?");
+            if (result) {
+                $.blockUI();
+                var json = JSON.stringify({ user_ids: this.user_ids });
+                this._userService.deleteUsers(json).subscribe(function (data) { _this.users = data; }, function (err) { return console.error(err); }, function () { return $.unblockUI(); });
+                this.messageBlue = false;
+            }
         }
         else {
             this.messageBlue = true;
@@ -91,8 +94,13 @@ var UserComponent = (function () {
                 this.user_ids.splice(index, 1);
             }
         }
-        console.log("UserIDS " + this.user_ids);
         return this.user_ids;
+    };
+    /*
+     * Select all users
+     */
+    UserComponent.prototype.toggleAll = function (event) {
+        alert(event);
     };
     UserComponent = __decorate([
         core_1.Component({

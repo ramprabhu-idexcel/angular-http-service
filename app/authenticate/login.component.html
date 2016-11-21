@@ -26,24 +26,26 @@
                 <div *ngIf="error" class="alert alert-danger" style="color: red">{{error}}</div>
             </div>
 
-            <table border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <th style="color: #161616;">Username</th>
-                    <td><input type="text"  class="login-inp" #user_name (keyup)="onUserName(user_name.value)"/></td>
-                </tr>
-                <tr>
-                    <th style="color: #161616;">Password</th>
-                    <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp"  #password (keyup)="onPassword(password.value)"/></td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td valign="top"><input type="checkbox" class="checkbox-size" id="login-check" /><label for="login-check">Remember me</label></td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td><input type="button" class="submit-login" (click)="OnSubmit()" /></td>
-                </tr>
-            </table>
+            <form (keydown)="keyDownFunction($event)">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th style="color: #161616;">Username</th>
+                        <td><input type="text"  class="login-inp" #user_name (keyup)="onUserName(user_name.value)"/></td>
+                    </tr>
+                    <tr>
+                        <th style="color: #161616;">Password</th>
+                        <td><input type="password" value="************"  onfocus="this.value=''" class="login-inp"  #password (keyup)="onPassword(password.value)"/></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td valign="top"><input type="checkbox" class="checkbox-size" id="login-check" /><label for="login-check">Remember me</label></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="button" class="submit-login" (click)="OnSubmit()" /></td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <!--  end login-inner -->
         <div class="clear"></div>

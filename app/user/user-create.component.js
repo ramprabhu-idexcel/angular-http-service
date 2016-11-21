@@ -41,7 +41,7 @@ var UserCreateComponent = (function () {
                     "phone": this.phone } });
             this._userService
                 .createUser(this.jsonString)
-                .subscribe(function (response) { return _this.successResponse(response); }, function (error) { return console.log(error); }, function () { return $.unblockUI(); });
+                .subscribe(function (response) { return _this.successResponse(response); }, function (error) { return _this.failureResponse(error.json()); }, function () { return $.unblockUI(); });
         }
     };
     /*
@@ -76,6 +76,36 @@ var UserCreateComponent = (function () {
             case 'phone':
                 this.phone = value;
                 break;
+        }
+    };
+    /*
+     * Failure response
+     */
+    UserCreateComponent.prototype.failureResponse = function (errorContent) {
+        $.unblockUI();
+        /*
+         * User name uniqueness validation
+         */
+        if (errorContent && errorContent.username) {
+            var errorMsg = "User name " + errorContent.username[0];
+            $("#user_name").closest('td').next().html("<div class='error-left'>" + "</div><div class='error-inner'>" + errorMsg + "</div>");
+            $('#user_name').attr('class', 'inp-form-error');
+        }
+        else {
+            $("#user_name").closest('td').next().html("");
+            $('#user_name').attr('class', 'inp-form');
+        }
+        /*
+         * Email uniqueness validation
+         */
+        if (errorContent && errorContent.email) {
+            var errorMsg = "Email " + errorContent.email[0];
+            $("#email").closest('td').next().html("<div class='error-left'>" + "</div><div class='error-inner'>" + errorMsg + "</div>");
+            $('#email').attr('class', 'inp-form-error');
+        }
+        else {
+            $("#email").closest('td').next().html("");
+            $('#email').attr('class', 'inp-form');
         }
     };
     /*

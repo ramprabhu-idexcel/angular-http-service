@@ -50,7 +50,7 @@ export class UserCreateComponent{
             this._userService
                 .createUser(this.jsonString)
                 .subscribe(response => this.successResponse(response),
-                    error => console.log(error),
+                    error => this.failureResponse(error.json()),
                     () => $.unblockUI());
         }
     }
@@ -87,6 +87,38 @@ export class UserCreateComponent{
             case 'phone':
                 this.phone = value;
                 break;
+        }
+    }
+
+    /*
+     * Failure response
+     */
+    failureResponse(errorContent){
+        $.unblockUI();
+        /*
+         * User name uniqueness validation
+         */
+        if(errorContent && errorContent.username){
+            var errorMsg = "User name "+errorContent.username[0];
+            $("#user_name").closest('td').next().html("<div class='error-left'>" + "</div><div class='error-inner'>" + errorMsg +"</div>");
+            $('#user_name').attr('class', 'inp-form-error');
+        }
+        else{
+            $("#user_name").closest('td').next().html("");
+            $('#user_name').attr('class', 'inp-form');
+        }
+
+        /*
+         * Email uniqueness validation
+         */
+        if(errorContent && errorContent.email){
+            var errorMsg = "Email "+errorContent.email[0];
+            $("#email").closest('td').next().html("<div class='error-left'>" + "</div><div class='error-inner'>" + errorMsg +"</div>");
+            $('#email').attr('class', 'inp-form-error');
+        }
+        else{
+            $("#email").closest('td').next().html("");
+            $('#email').attr('class', 'inp-form');
         }
     }
 
