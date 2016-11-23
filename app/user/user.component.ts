@@ -7,6 +7,12 @@ import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { UserService } from './user.service'
 import { PaginatePipe, PaginationControlsCmp, PaginationService, IPaginationInstance } from 'ng2-pagination';
+/*
+ * Sorting records
+ */
+import { Column } from '../sorting/column';
+import { Sorter } from '../sorting/sorter';
+import { CurrentRecords } from '../sorting/current.records'
 
 
 @Component({
@@ -17,7 +23,10 @@ import { PaginatePipe, PaginationControlsCmp, PaginationService, IPaginationInst
 })
 
 export class UserComponent implements OnInit{
-	constructor(private _userService: UserService) { }
+    sorter: Sorter;
+	constructor(private _userService: UserService) {
+        this.sorter = new Sorter();
+    }
 	public users: Array<any>;
     public editing: boolean = false;
     public viewUsers : boolean = true;
@@ -37,9 +46,17 @@ export class UserComponent implements OnInit{
     public messageBlue: boolean = false;
  
  	ngOnInit(){
-        console.log(localStorage.getItem('currentUser'));
  		this.getUsers();
 	}
+
+    /*
+     * Sort records
+     */
+    sort(key){
+        var currentUsers = this.currentRecords();
+        console.log(currentUsers);
+        this.sorter.sort(key, currentUsers);
+    }
 
     /*
      set list of alerts per page
@@ -118,6 +135,29 @@ export class UserComponent implements OnInit{
      * Select all users
      */
     toggleAll(event){
-        alert(event);
+        var currentUsers = this.currentRecords();
+        if(event == true){
+            currentUsers.forEach(user => {
+                user.user_id = true;
+                this.onChange(user.id,true);
+            });
+        }
+        else{
+            currentUsers.forEach(user => {
+                user.user_id = false;
+                this.onChange(user.id,false);
+            });
+
+        }
+    }
+
+    /*
+     * list of current records
+     */
+    currentRecords(){
+        var currentRecords = new CurrentRecords(this.config.currentPage,
+                                                this.config.itemsPerPage,
+                                                this.users);
+        return currentRecords.count();
     }
 }

@@ -230,7 +230,7 @@
 								<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 									<tr>
 										<th class="table-header-check"><input type="checkbox" id="toggle-all" #all_users_id [checked]=false (change)="toggleAll(all_users_id.checked)"/> </th>
-										<th class="table-header-repeat line-left minwidth-1"><a href="">First Name</a>	</th>
+										<th class="table-header-repeat line-left minwidth-1"><a (click)="sort('first_name')">First Name</a></th>
 										<th class="table-header-repeat line-left minwidth-1"><a href="">Last Name</a></th>
 										<th class="table-header-repeat line-left"><a href="">Email</a></th>
 										<th class="table-header-repeat line-left"><a href="">Age</a></th>
@@ -240,7 +240,7 @@
 										<th class="table-header-options line-left"><a href="">Options</a></th>
 									</tr>
 									<tr *ngFor="let user of users | paginate: config; let i = index;" [class]= "((i%2) == 0) ? '' : 'alternate-row'">
-										<td><input type="checkbox" id="{{user.id}}" #user_id [checked]=false (change)="onChange(user_id.id,user_id.checked)" /></td>
+										<td><input type="checkbox" id="{{user.id}}" #user_id [checked]=false (change)="onChange(user_id.id,user_id.checked)" [ngModel]="user.user_id" name="user_id"/></td>
 										<td>{{ user.first_name }}</td>
 										<td>{{ user.last_name }}</td>
 										<td>{{ user.email }}</td>

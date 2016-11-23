@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 // Import and use below directive
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import { UserService } from './user.service'
+import { UserService } from './user.service';
 
 @Component({
     templateUrl: 'app/user/user-create.component.html',

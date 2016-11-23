@@ -15,6 +15,8 @@ var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var user_service_1 = require('./user.service');
 var ng2_pagination_1 = require('ng2-pagination');
+var sorter_1 = require('../sorting/sorter');
+var current_records_1 = require('../sorting/current.records');
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
@@ -32,10 +34,18 @@ var UserComponent = (function () {
         };
         this.user_ids = [];
         this.messageBlue = false;
+        this.sorter = new sorter_1.Sorter();
     }
     UserComponent.prototype.ngOnInit = function () {
-        console.log(localStorage.getItem('currentUser'));
         this.getUsers();
+    };
+    /*
+     * Sort records
+     */
+    UserComponent.prototype.sort = function (key) {
+        var currentUsers = this.currentRecords();
+        console.log(currentUsers);
+        this.sorter.sort(key, currentUsers);
     };
     /*
      set list of alerts per page
@@ -100,7 +110,27 @@ var UserComponent = (function () {
      * Select all users
      */
     UserComponent.prototype.toggleAll = function (event) {
-        alert(event);
+        var _this = this;
+        var currentUsers = this.currentRecords();
+        if (event == true) {
+            currentUsers.forEach(function (user) {
+                user.user_id = true;
+                _this.onChange(user.id, true);
+            });
+        }
+        else {
+            currentUsers.forEach(function (user) {
+                user.user_id = false;
+                _this.onChange(user.id, false);
+            });
+        }
+    };
+    /*
+     * list of current records
+     */
+    UserComponent.prototype.currentRecords = function () {
+        var currentRecords = new current_records_1.CurrentRecords(this.config.currentPage, this.config.itemsPerPage, this.users);
+        return currentRecords.count();
     };
     UserComponent = __decorate([
         core_1.Component({
