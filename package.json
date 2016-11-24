@@ -10,6 +10,7 @@
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "typings": "typings",
+    "preinstall": "npm i typings -g",
     "postinstall": "typings install"
   },
   "license": "ISC",
