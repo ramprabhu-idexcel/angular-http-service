@@ -11,7 +11,10 @@
     "lite": "lite-server",
     "typings": "typings",
     "preinstall": "npm i typings -g",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "concurrently": "npm install -g concurrently --save",
+    "lite-server" : "npm install -g lite-server --save",
+    "typescript": "npm install -g typescript --save"
   },
   "license": "ISC",
   "dependencies": {
