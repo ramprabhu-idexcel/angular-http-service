@@ -7,11 +7,9 @@
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lint": "tslint ./app/**/*.ts -t verbose",
-    "lite": "lite-server",
-    "typings": "typings",
-    "preinstall": "npm i typings -g",
-    "postinstall": "typings install"
+    "prod": "NODE_ENV=production ./bin/www",
+    "build:prod": "node bin/bundler.js --prod",
+    "postinstall": "npm run build:prod"
   },
   "license": "ISC",
   "dependencies": {
