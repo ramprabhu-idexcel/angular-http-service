@@ -9,10 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
-var authentication_service_1 = require('./authentication.service');
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("./authentication.service");
 var LoginComponent = (function () {
     function LoginComponent(_authService, _router) {
         this._authService = _authService;
@@ -72,14 +72,14 @@ var LoginComponent = (function () {
             this.OnSubmit();
         }
     };
-    LoginComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'app/authenticate/login.component.html',
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
-        }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
-    ], LoginComponent);
     return LoginComponent;
 }());
+LoginComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/authenticate/login.component.html',
+        directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

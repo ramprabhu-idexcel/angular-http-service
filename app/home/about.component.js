@@ -9,23 +9,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 // Import and use below directive
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
 var AboutComponent = (function () {
     function AboutComponent() {
     }
     AboutComponent.prototype.ngOnInit = function () {
     };
-    AboutComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'app/home/about.component.html',
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AboutComponent);
     return AboutComponent;
 }());
+AboutComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/home/about.component.html',
+        directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
+    }),
+    __metadata("design:paramtypes", [])
+], AboutComponent);
 exports.AboutComponent = AboutComponent;
 //# sourceMappingURL=about.component.js.map

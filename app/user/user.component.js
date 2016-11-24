@@ -9,14 +9,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 // Import and use below directive
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
-var user_service_1 = require('./user.service');
-var ng2_pagination_1 = require('ng2-pagination');
-var sorter_1 = require('../sorting/sorter');
-var current_records_1 = require('../sorting/current.records');
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var user_service_1 = require("./user.service");
+var ng2_pagination_1 = require("ng2-pagination");
+var sorter_1 = require("../sorting/sorter");
+var current_records_1 = require("../sorting/current.records");
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
@@ -132,16 +132,16 @@ var UserComponent = (function () {
         var currentRecords = new current_records_1.CurrentRecords(this.config.currentPage, this.config.itemsPerPage, this.users);
         return currentRecords.count();
     };
-    UserComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'app/user/user.component.html',
-            pipes: [ng2_pagination_1.PaginatePipe],
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, ng2_pagination_1.PaginationControlsCmp],
-            providers: [ng2_pagination_1.PaginationService]
-        }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
-    ], UserComponent);
     return UserComponent;
 }());
+UserComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/user/user.component.html',
+        pipes: [ng2_pagination_1.PaginatePipe],
+        directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, ng2_pagination_1.PaginationControlsCmp],
+        providers: [ng2_pagination_1.PaginationService]
+    }),
+    __metadata("design:paramtypes", [user_service_1.UserService])
+], UserComponent);
 exports.UserComponent = UserComponent;
 //# sourceMappingURL=user.component.js.map

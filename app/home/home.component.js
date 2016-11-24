@@ -9,13 +9,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var demo_service_1 = require('./demo.service');
+var core_1 = require("@angular/core");
+var demo_service_1 = require("./demo.service");
 // Import and use below directive
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
-var config_1 = require('../config/config');
-require('rxjs/add/operator/map');
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var config_1 = require("../config/config");
+require("rxjs/add/operator/map");
 var HomeComponent = (function () {
     function HomeComponent(_demoService, config) {
         this._demoService = _demoService;
@@ -50,14 +50,14 @@ var HomeComponent = (function () {
         var _this = this;
         this._demoService.createFood(food_name).subscribe(function (data) { _this.message = data; }, function (err) { return console.error(err); });
     };
-    HomeComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'app/home/home.component.html',
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
-        }), 
-        __metadata('design:paramtypes', [demo_service_1.DemoService, config_1.Config])
-    ], HomeComponent);
     return HomeComponent;
 }());
+HomeComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/home/home.component.html',
+        directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
+    }),
+    __metadata("design:paramtypes", [demo_service_1.DemoService, config_1.Config])
+], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

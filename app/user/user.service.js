@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-require('rxjs/add/operator/map');
+require("rxjs/add/operator/map");
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
@@ -36,11 +36,11 @@ var UserService = (function () {
     UserService.prototype.deleteUsers = function (json) {
         return this._http.post(this.apiURL + '/api/users/delete_all', json, this.options).map(function (res) { return res.json(); });
     };
-    UserService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], UserService);
     return UserService;
 }());
+UserService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

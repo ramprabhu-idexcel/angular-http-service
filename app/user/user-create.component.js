@@ -9,11 +9,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 // Import and use below directive
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
-var user_service_1 = require('./user.service');
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var user_service_1 = require("./user.service");
 var UserCreateComponent = (function () {
     function UserCreateComponent(_userService, _router) {
         this._userService = _userService;
@@ -237,14 +237,14 @@ var UserCreateComponent = (function () {
         }
         return errorMessage;
     };
-    UserCreateComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'app/user/user-create.component.html',
-            directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
-        }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
-    ], UserCreateComponent);
     return UserCreateComponent;
 }());
+UserCreateComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/user/user-create.component.html',
+        directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
+    }),
+    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
+], UserCreateComponent);
 exports.UserCreateComponent = UserCreateComponent;
 //# sourceMappingURL=user-create.component.js.map
