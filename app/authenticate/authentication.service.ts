@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService {
     public token: string;
-    public apiURL: string = "http://localhost:4000";
+    public apiURL: string = "https://ram-nivi.herokuapp.com";
     private headers: string;
     private options: {};
 

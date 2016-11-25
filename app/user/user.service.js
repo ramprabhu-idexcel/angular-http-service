@@ -14,7 +14,7 @@ require("rxjs/add/operator/map");
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
-        this.apiURL = "http://localhost:4000";
+        this.apiURL = "https://ram-nivi.herokuapp.com";
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.options = new http_1.RequestOptions({ headers: this.headers });
     }

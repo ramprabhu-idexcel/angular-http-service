@@ -12,7 +12,7 @@ export class Config {
     private _config: Object = {
         "server" : "http://localhost",
         "port" : "4000"
-    } 
+    };
 
     constructor(http: Http) { 
         http.get('app/config/development.json')

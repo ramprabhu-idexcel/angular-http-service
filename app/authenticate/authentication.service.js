@@ -14,7 +14,7 @@ require("rxjs/add/operator/map");
 var AuthenticationService = (function () {
     function AuthenticationService(_http) {
         this._http = _http;
-        this.apiURL = "http://localhost:4000";
+        this.apiURL = "https://ram-nivi.herokuapp.com";
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;

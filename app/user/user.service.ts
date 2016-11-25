@@ -17,7 +17,7 @@ export class UserService {
         this.options = new RequestOptions({ headers: this.headers });
     }
 
-    public apiURL = "http://localhost:4000";
+    public apiURL = "https://ram-nivi.herokuapp.com";
 
     /*
      * Get all users
