@@ -17,6 +17,7 @@ var user_service_1 = require("./user.service");
 var ng2_pagination_1 = require("ng2-pagination");
 var sorter_1 = require("../sorting/sorter");
 var current_records_1 = require("../sorting/current.records");
+var order_by_1 = require("app/sorting/order.by");
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
@@ -44,7 +45,6 @@ var UserComponent = (function () {
      */
     UserComponent.prototype.sort = function (key) {
         var currentUsers = this.currentRecords();
-        console.log(currentUsers);
         this.sorter.sort(key, currentUsers);
     };
     /*
@@ -137,7 +137,7 @@ var UserComponent = (function () {
 UserComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/user/user.component.html',
-        pipes: [ng2_pagination_1.PaginatePipe],
+        pipes: [ng2_pagination_1.PaginatePipe, order_by_1.OrderBy],
         directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, ng2_pagination_1.PaginationControlsCmp],
         providers: [ng2_pagination_1.PaginationService]
     }),

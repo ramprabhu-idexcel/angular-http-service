@@ -14,9 +14,11 @@ import { AuthenticationService } from './authenticate/authentication.service';
 
 import { Config } from './config/config'
 
-import { provide, APP_INITIALIZER } from "@angular/core";
+import { provide, APP_INITIALIZER, enableProdMode } from "@angular/core";
 
 import { APP_ROUTER_PROVIDERS } from './app.routing';
+
+enableProdMode();
 
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,

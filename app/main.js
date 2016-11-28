@@ -9,6 +9,7 @@ var authentication_service_1 = require("./authenticate/authentication.service");
 var config_1 = require("./config/config");
 var core_1 = require("@angular/core");
 var app_routing_1 = require("./app.routing");
+core_1.enableProdMode();
 platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     http_1.HTTP_PROVIDERS,
     demo_service_1.DemoService,

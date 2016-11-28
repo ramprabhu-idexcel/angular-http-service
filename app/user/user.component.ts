@@ -14,10 +14,12 @@ import { Column } from '../sorting/column';
 import { Sorter } from '../sorting/sorter';
 import { CurrentRecords } from '../sorting/current.records'
 
+import { OrderBy } from 'app/sorting/order.by';
+
 
 @Component({
     templateUrl: 'app/user/user.component.html',
-    pipes: [PaginatePipe],
+    pipes: [PaginatePipe, OrderBy],
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, PaginationControlsCmp],
     providers: [PaginationService]
 })
@@ -54,7 +56,6 @@ export class UserComponent implements OnInit{
      */
     sort(key){
         var currentUsers = this.currentRecords();
-        console.log(currentUsers);
         this.sorter.sort(key, currentUsers);
     }
 

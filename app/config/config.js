@@ -9,20 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
 var http_1 = require("@angular/http");
 var Config = (function () {
     function Config(http) {
         this.http = http;
-        this.Env = "development";
     }
     /*
      * Load configuration files
      */
     Config.prototype.load = function () {
         var _this = this;
-        this.http.get("app/config/" + this.Env + ".json")
-            .map(function (response) { return response.json(); })
-            .subscribe(function (result) { return _this._config = result; });
+        this.http.get('app/config/env.json')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (env_data) {
+            _this._env = env_data;
+            _this.http.get('app/config/' + env_data.env + '.json')
+                .map(function (res) { return res.json(); })
+                .catch(function (error) {
+                console.error(error);
+                return Observable_1.Observable.throw(error.json().error || 'Server error');
+            })
+                .subscribe(function (data) {
+                _this._config = data;
+            });
+        });
         return Promise.resolve(this._config);
     };
     /*
