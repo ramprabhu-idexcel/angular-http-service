@@ -7,6 +7,7 @@ var user_service_1 = require("./user/user.service");
 var index_1 = require("./_guards/index");
 var authentication_service_1 = require("./authenticate/authentication.service");
 var config_1 = require("./config/config");
+var core_1 = require("@angular/core");
 var app_routing_1 = require("./app.routing");
 platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     http_1.HTTP_PROVIDERS,
@@ -15,6 +16,10 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     authentication_service_1.AuthenticationService,
     index_1.AuthGuard,
     config_1.Config,
-    app_routing_1.APP_ROUTER_PROVIDERS
+    app_routing_1.APP_ROUTER_PROVIDERS,
+    { provide: core_1.APP_INITIALIZER,
+        useFactory: function (config) { return function () { return config.load(); }; },
+        deps: [config_1.Config],
+        multi: true }
 ]).catch(function (err) { return console.error(err); });
 //# sourceMappingURL=main.js.map

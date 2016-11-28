@@ -12,26 +12,24 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Config = (function () {
     function Config(http) {
+        this.http = http;
+        this.Env = "development";
+    }
+    /*
+     * Load configuration files
+     */
+    Config.prototype.load = function () {
         var _this = this;
-        this._config = {
-            "server": "http://localhost",
-            "port": "4000"
-        };
-        http.get('app/config/development.json')
+        this.http.get("app/config/" + this.Env + ".json")
             .map(function (response) { return response.json(); })
             .subscribe(function (result) { return _this._config = result; });
-    }
-    Config.prototype.getEnv = function (key) {
-        return this._env[key];
+        return Promise.resolve(this._config);
     };
+    /*
+     * Get the details of configuration key
+     */
     Config.prototype.get = function (key) {
         return this._config[key];
-    };
-    Config.prototype.setCustom = function (key, val) {
-        this._configCustom[key] = val;
-    };
-    Config.prototype.getCustom = function (key) {
-        return this._configCustom[key];
     };
     return Config;
 }());
@@ -40,5 +38,4 @@ Config = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], Config);
 exports.Config = Config;
-;
 //# sourceMappingURL=config.js.map

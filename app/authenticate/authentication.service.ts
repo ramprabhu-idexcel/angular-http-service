@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import { Config } from 'app/config/config';
 
 @Injectable()
 export class AuthenticationService {
     public token: string;
-    public apiURL: string = "https://ram-nivi.herokuapp.com";
+    public apiURL: string;
     private headers: string;
     private options: {};
 
-
-    constructor(private _http: Http) {
+    constructor(private _http: Http, private _config: Config) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
         // Api headers
         this.headers = new Headers({ 'Content-Type': 'application/json' });
         this.options = new RequestOptions({ headers: this.headers });
+        /*
+         * Backend server Url
+         */
+        this.apiURL = _config.get('apiUrl');
     }
 
     /*

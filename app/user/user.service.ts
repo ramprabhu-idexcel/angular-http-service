@@ -6,18 +6,23 @@ import {Observable} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 
+import { Config } from 'app/config/config';
+
 @Injectable()
 
 export class UserService {
     private headers;
     private options;
+    public apiURL: string;
 
-    constructor(private _http:Http) {
+    constructor(private _http:Http, private _config: Config) {
         this.headers = new Headers({ 'Content-Type': 'application/json' });
         this.options = new RequestOptions({ headers: this.headers });
+        /*
+         * Backend server Url
+         */
+        this.apiURL = _config.get('apiUrl');
     }
-
-    public apiURL = "https://ram-nivi.herokuapp.com";
 
     /*
      * Get all users

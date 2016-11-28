@@ -1,4 +1,4 @@
 {
-  "apiUrl": "/src/",
+  "apiUrl": "http://localhost:4000",
   "debugging": true
 }

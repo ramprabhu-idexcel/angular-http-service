@@ -11,16 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var config_1 = require("app/config/config");
 var AuthenticationService = (function () {
-    function AuthenticationService(_http) {
+    function AuthenticationService(_http, _config) {
         this._http = _http;
-        this.apiURL = "https://ram-nivi.herokuapp.com";
+        this._config = _config;
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
         // Api headers
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.options = new http_1.RequestOptions({ headers: this.headers });
+        /*
+         * Backend server Url
+         */
+        this.apiURL = _config.get('apiUrl');
     }
     /*
      * create user session
@@ -57,7 +62,8 @@ var AuthenticationService = (function () {
 }());
 AuthenticationService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, typeof (_a = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _a || Object])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
+var _a;
 //# sourceMappingURL=authentication.service.js.map

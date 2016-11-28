@@ -11,12 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var config_1 = require("app/config/config");
 var UserService = (function () {
-    function UserService(_http) {
+    function UserService(_http, _config) {
         this._http = _http;
-        this.apiURL = "https://ram-nivi.herokuapp.com";
+        this._config = _config;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.options = new http_1.RequestOptions({ headers: this.headers });
+        /*
+         * Backend server Url
+         */
+        this.apiURL = _config.get('apiUrl');
     }
     /*
      * Get all users
@@ -40,7 +45,8 @@ var UserService = (function () {
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, typeof (_a = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _a || Object])
 ], UserService);
 exports.UserService = UserService;
+var _a;
 //# sourceMappingURL=user.service.js.map
