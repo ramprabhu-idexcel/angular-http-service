@@ -18,6 +18,10 @@ var ng2_pagination_1 = require("ng2-pagination");
 var sorter_1 = require("../sorting/sorter");
 var current_records_1 = require("../sorting/current.records");
 var order_by_1 = require("app/sorting/order.by");
+/*
+ * Report generate
+ */
+var csv_report_component_1 = require("../reports/csv-report.component");
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
@@ -131,6 +135,13 @@ var UserComponent = (function () {
     UserComponent.prototype.currentRecords = function () {
         var currentRecords = new current_records_1.CurrentRecords(this.config.currentPage, this.config.itemsPerPage, this.users);
         return currentRecords.count();
+    };
+    /*
+     * Download csv reports
+     */
+    UserComponent.prototype.downloadCSV = function (args) {
+        var csvExport = new csv_report_component_1.CsvReportComponent(args, this.users);
+        return csvExport.downloadCSV();
     };
     return UserComponent;
 }());

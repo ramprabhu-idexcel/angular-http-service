@@ -13,8 +13,11 @@ import { PaginatePipe, PaginationControlsCmp, PaginationService, IPaginationInst
 import { Column } from '../sorting/column';
 import { Sorter } from '../sorting/sorter';
 import { CurrentRecords } from '../sorting/current.records'
-
 import { OrderBy } from 'app/sorting/order.by';
+/*
+ * Report generate
+ */
+import { CsvReportComponent } from '../reports/csv-report.component';
 
 
 @Component({
@@ -160,5 +163,13 @@ export class UserComponent implements OnInit{
                                                 this.config.itemsPerPage,
                                                 this.users);
         return currentRecords.count();
+    }
+
+    /*
+     * Download csv reports
+     */
+    downloadCSV(args) {
+        let csvExport = new CsvReportComponent(args,this.users);
+        return csvExport.downloadCSV();
     }
 }
