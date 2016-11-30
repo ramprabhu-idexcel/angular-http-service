@@ -12,7 +12,9 @@ import { AuthGuard } from './_guards/index';
 
 import { AuthenticationService } from './authenticate/authentication.service';
 
-import { Config } from './config/config'
+import { Config } from './config/config';
+
+import { HttpClient } from 'app/config/http-client';
 
 import { provide, APP_INITIALIZER, enableProdMode } from "@angular/core";
 
@@ -27,6 +29,7 @@ bootstrap(AppComponent, [
     AuthenticationService,
     AuthGuard,
     Config,
+    HttpClient,
     APP_ROUTER_PROVIDERS,
     { provide: APP_INITIALIZER,
         useFactory: (config: Config) => () => config.load(),

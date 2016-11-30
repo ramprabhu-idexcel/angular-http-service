@@ -3,21 +3,21 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { Config } from 'app/config/config';
+/*
+ * Http client
+ */
+import { HttpClient } from 'app/config/http-client';
+
 
 @Injectable()
 export class AuthenticationService {
     public token: string;
     public apiURL: string;
-    private headers: string;
-    private options: {};
 
-    constructor(private _http: Http, private _config: Config) {
+    constructor(private _http: HttpClient, private _config: Config) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
-        // Api headers
-        this.headers = new Headers({ 'Content-Type': 'application/json' });
-        this.options = new RequestOptions({ headers: this.headers });
         /*
          * Backend server Url
          */
@@ -28,7 +28,9 @@ export class AuthenticationService {
      * create user session
      */
     login(username, password): Observable<boolean> {
-        return this._http.post(this.apiURL+'/api/users/authenticate', JSON.stringify({"user": { username: username, password: password }}), this.options)
+        let serviceUrl = this.apiURL+'/api/users/authenticate';
+        let data = JSON.stringify({"user": { username: username, password: password }});
+        return this._http.post(serviceUrl, data)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;

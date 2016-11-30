@@ -9,9 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var config_1 = require("app/config/config");
+/*
+ * Http client
+ */
+var http_client_1 = require("app/config/http-client");
 var AuthenticationService = (function () {
     function AuthenticationService(_http, _config) {
         this._http = _http;
@@ -19,9 +22,6 @@ var AuthenticationService = (function () {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
-        // Api headers
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.options = new http_1.RequestOptions({ headers: this.headers });
         /*
          * Backend server Url
          */
@@ -32,7 +32,9 @@ var AuthenticationService = (function () {
      */
     AuthenticationService.prototype.login = function (username, password) {
         var _this = this;
-        return this._http.post(this.apiURL + '/api/users/authenticate', JSON.stringify({ "user": { username: username, password: password } }), this.options)
+        var serviceUrl = this.apiURL + '/api/users/authenticate';
+        var data = JSON.stringify({ "user": { username: username, password: password } });
+        return this._http.post(serviceUrl, data)
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var token = response.json() && response.json().token;
@@ -62,8 +64,8 @@ var AuthenticationService = (function () {
 }());
 AuthenticationService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, typeof (_a = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof http_client_1.HttpClient !== "undefined" && http_client_1.HttpClient) === "function" && _a || Object, typeof (_b = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _b || Object])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
-var _a;
+var _a, _b;
 //# sourceMappingURL=authentication.service.js.map

@@ -9,15 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var config_1 = require("app/config/config");
+/*
+ * Http client
+ */
+var http_client_1 = require("app/config/http-client");
 var UserService = (function () {
     function UserService(_http, _config) {
         this._http = _http;
         this._config = _config;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.options = new http_1.RequestOptions({ headers: this.headers });
         /*
          * Backend server Url
          */
@@ -27,26 +28,29 @@ var UserService = (function () {
      * Get all users
      */
     UserService.prototype.getUsers = function () {
-        return this._http.get(this.apiURL + "/api/users").map(function (res) { return res.json(); });
+        var serviceUrl = this.apiURL + "/api/users";
+        return this._http.get(serviceUrl).map(function (res) { return res.json(); });
     };
     /*
      * Create a new user
      */
     UserService.prototype.createUser = function (json) {
-        return this._http.post(this.apiURL + '/api/users', json, this.options).map(function (res) { return res.json(); });
+        var serviceUrl = this.apiURL + '/api/users';
+        return this._http.post(serviceUrl, json).map(function (res) { return res.json(); });
     };
     /*
      * Delete users
      */
     UserService.prototype.deleteUsers = function (json) {
-        return this._http.post(this.apiURL + '/api/users/delete_all', json, this.options).map(function (res) { return res.json(); });
+        var serviceUrl = this.apiURL + '/api/users/delete_all';
+        return this._http.post(serviceUrl, json).map(function (res) { return res.json(); });
     };
     return UserService;
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, typeof (_a = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof http_client_1.HttpClient !== "undefined" && http_client_1.HttpClient) === "function" && _a || Object, typeof (_b = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _b || Object])
 ], UserService);
 exports.UserService = UserService;
-var _a;
+var _a, _b;
 //# sourceMappingURL=user.service.js.map
