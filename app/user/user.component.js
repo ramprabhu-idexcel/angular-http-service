@@ -25,6 +25,7 @@ var csv_report_component_1 = require("../reports/csv-report.component");
 var UserComponent = (function () {
     function UserComponent(_userService) {
         this._userService = _userService;
+        this.showUsers = true;
         this.editing = false;
         this.viewUsers = true;
         this.addUser = false;
@@ -142,6 +143,12 @@ var UserComponent = (function () {
     UserComponent.prototype.downloadCSV = function (args) {
         var csvExport = new csv_report_component_1.CsvReportComponent(args, this.users);
         return csvExport.downloadCSV();
+    };
+    /*
+     * Download PDF reports
+     */
+    UserComponent.prototype.downloadPdf = function () {
+        $('#content-table').tableExport({ type: 'pdf', escape: 'false' });
     };
     return UserComponent;
 }());

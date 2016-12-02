@@ -15,7 +15,14 @@
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="app/js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="app/js/jquery/jquery.blockUI.js" type="text/javascript"></script>
-    <!-- 2. Configure SystemJS -->
+    <!-- 2. Export pdf csv reports -->
+    <script type="text/javascript" src="app/js/export/tableExport.js"></script>
+    <script type="text/javascript" src="app/js/export/jquery.base64.js"></script>
+    <script type="text/javascript" src="app/js/export/html2canvas.js"></script>
+    <script type="text/javascript" src="app/js/export/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="app/js/export/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="app/js/export/jspdf/libs/base64.js"></script>
+    <!-- 3. configure system config js -->
     <script src="systemjs.config.js"></script>
     <script>
         System.import('app').catch(function(err){ console.error(err); });

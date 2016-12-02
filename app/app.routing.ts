@@ -12,6 +12,8 @@ import { LoginComponent } from './authenticate/login.component';
 
 import { AuthGuard } from './_guards/index';
 
+import { QuizComponent } from './quiz/quiz.component';
+
 
 export const routes: RouterConfig = [
   { path: 'login',
@@ -39,6 +41,10 @@ export const routes: RouterConfig = [
   {
     path: 'user/create',
     component: UserCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'quiz',
+    component: QuizComponent,
     canActivate: [AuthGuard]
   }
 ];

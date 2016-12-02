@@ -107,7 +107,7 @@
 
 				<ul class="current"><li><a [routerLink]="['/users']"><b>Users</b><!--[if IE 7]><!--></a><!--<![endif]-->
 					<!--[if lte IE 6]><table><tr><td><![endif]-->
-					<div class="select_sub show">
+					<div class="select_sub show" *ngIf="showUsers">
 						<ul class="sub">
 							<li class="sub_show"><a [routerLink]="['/users']">View all users</a></li>
 							<li><a [routerLink]="['/user/create']">Add user</a></li>
@@ -120,11 +120,11 @@
 
 				<div class="nav-divider">&nbsp;</div>
 
-				<ul class="select"><li><a href="#nogo"><b>Categories</b><!--[if IE 7]><!--></a><!--<![endif]-->
+				<ul class="select"><li><a [routerLink]="['/quiz']"><b>Quiz</b><!--[if IE 7]><!--></a><!--<![endif]-->
 					<!--[if lte IE 6]><table><tr><td><![endif]-->
-					<div class="select_sub">
+					<div class="select_sub show" *ngIf="showQuiz">
 						<ul class="sub">
-							<li><a href="#nogo">Categories Details 1</a></li>
+							<li class="sub_show"><a [routerLink]="['/quiz']">Attend Quiz</a></li>
 							<li><a href="#nogo">Categories Details 2</a></li>
 							<li><a href="#nogo">Categories Details 3</a></li>
 						</ul>
@@ -221,6 +221,15 @@
 									<tr>
 										<td class="blue-left">Excel Report <a (click)='downloadCSV({ filename: "users.csv" });'>Click here to download.</a></td>
 										<td class="blue-right"><a class="close-blue"><img src="app/images/table/icon_close_blue.gif"   alt="" /></a></td>
+									</tr>
+								</table>
+							</div>
+
+							<div id="message-yellow">
+								<table border="0" width="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="yellow-left">PDF Report <a (click)='downloadPdf()'>Click here to download.</a></td>
+										<td class="yellow-right"><a class="close-blue"><img src="app/images/table/icon_close_yellow.gif"   alt="" /></a></td>
 									</tr>
 								</table>
 							</div>

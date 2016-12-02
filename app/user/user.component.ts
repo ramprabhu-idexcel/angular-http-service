@@ -29,6 +29,7 @@ import { CsvReportComponent } from '../reports/csv-report.component';
 
 export class UserComponent implements OnInit{
     sorter: Sorter;
+    public showUsers: boolean = true;
 	constructor(private _userService: UserService) {
         this.sorter = new Sorter();
     }
@@ -171,5 +172,12 @@ export class UserComponent implements OnInit{
     downloadCSV(args) {
         let csvExport = new CsvReportComponent(args,this.users);
         return csvExport.downloadCSV();
+    }
+
+    /*
+     * Download PDF reports
+     */
+    downloadPdf(){
+        $('#content-table').tableExport({type:'pdf',escape:'false'});
     }
 }

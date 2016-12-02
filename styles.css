@@ -1397,10 +1397,7 @@ span.ui-radio-state-checked	{
 span.ui-radio-state-checked-hover	{
     background-position: 0 -17px;
 }
-label	{
-    color: red;
-    line-height: 20px;
-}
+
 .ui-helper-hidden-accessible	{
     left: -999em;
     position: absolute;

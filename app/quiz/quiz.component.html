@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Internet Dreams</title>
+</head>
+<body>
+<!-- Start: page-top-outer -->
+<div id="page-top-outer">
+
+    <!-- Start: page-top -->
+    <div id="page-top">
+
+        <!-- start logo -->
+        <div id="logo">
+            <a href=""><img src="app/images/shared/logo.png" width="156" height="40" alt="" /></a>
+        </div>
+        <!-- end logo -->
+
+        <!--  start top-search -->
+        <div id="top-search">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><input type="text" value="Search" onblur="if (this.value=='') { this.value='Search'; }" onfocus="if (this.value=='Search') { this.value=''; }" class="top-search-inp" /></td>
+                    <td>
+                        <select  class="styledselect">
+                            <option value=""> All</option>
+                            <option value=""> Users</option>
+                            <option value=""> Categories</option>
+                            <option value="">Clients</option>
+                            <option value="">News</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="image" src="app/images/shared/top_search_btn.gif"  />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--  end top-search -->
+        <div class="clear"></div>
+
+    </div>
+    <!-- End: page-top -->
+
+</div>
+<!-- End: page-top-outer -->
+
+<div class="clear">&nbsp;</div>
+
+<!--  start nav-outer-repeat................................................................................................. START -->
+<div class="nav-outer-repeat">
+    <!--  start nav-outer -->
+    <div class="nav-outer">
+
+        <!-- start nav-right -->
+        <div id="nav-right">
+
+            <div class="nav-divider">&nbsp;</div>
+            <div class="showhide-account"><img src="app/images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
+            <div class="nav-divider">&nbsp;</div>
+            <a [routerLink]="['/login']" id="logout"><img src="app/images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+            <div class="clear">&nbsp;</div>
+
+            <!--  start account-content -->
+            <div class="account-content">
+                <div class="account-drop-inner">
+                    <a href="" id="acc-settings">Settings</a>
+                    <div class="clear">&nbsp;</div>
+                    <div class="acc-line">&nbsp;</div>
+                    <a href="" id="acc-details">Personal details </a>
+                    <div class="clear">&nbsp;</div>
+                    <div class="acc-line">&nbsp;</div>
+                    <a href="" id="acc-project">Project details</a>
+                    <div class="clear">&nbsp;</div>
+                    <div class="acc-line">&nbsp;</div>
+                    <a href="" id="acc-inbox">Inbox</a>
+                    <div class="clear">&nbsp;</div>
+                    <div class="acc-line">&nbsp;</div>
+                    <a href="" id="acc-stats">Statistics</a>
+                </div>
+            </div>
+            <!--  end account-content -->
+
+        </div>
+        <!-- end nav-right -->
+
+
+        <!--  start nav -->
+        <div class="nav">
+            <div class="table">
+
+                <ul class="select"><li><a href="#nogo"><b>Dashboard</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <div class="select_sub">
+                        <ul class="sub">
+                            <li><a href="#nogo">Dashboard Details 1</a></li>
+                            <li><a href="#nogo">Dashboard Details 2</a></li>
+                            <li><a href="#nogo">Dashboard Details 3</a></li>
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                </ul>
+
+                <div class="nav-divider">&nbsp;</div>
+
+                <ul class="select"><li><a [routerLink]="['/users']"><b>Users</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <div class="select_sub" *ngIf="showUsers">
+                        <ul class="sub">
+                            <li class="sub_show"><a [routerLink]="['/users']">View all users</a></li>
+                            <li><a [routerLink]="['/user/create']">Add user</a></li>
+                            <li><a (click)="deleteUsers()">Delete users</a></li>
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                </ul>
+
+                <div class="nav-divider">&nbsp;</div>
+
+                <ul class="current"><li><a [routerLink]="['/quiz']"><b>Quiz</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <div class="select_sub show" *ngIf="showQuiz">
+                        <ul class="sub">
+                            <li class="sub_show"><a [routerLink]="['/quiz']">Quiz1</a></li>
+                            <li><a href="#nogo">Quiz 2</a></li>
+                            <li><a href="#nogo">Quiz 3</a></li>
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                </ul>
+
+                <div class="nav-divider">&nbsp;</div>
+
+                <ul class="select"><li><a href="#nogo"><b>Clients</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <div class="select_sub">
+                        <ul class="sub">
+                            <li><a href="#nogo">Clients Details 1</a></li>
+                            <li><a href="#nogo">Clients Details 2</a></li>
+                            <li><a href="#nogo">Clients Details 3</a></li>
+
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                </ul>
+
+                <div class="nav-divider">&nbsp;</div>
+
+                <ul class="select"><li><a href="#nogo"><b>News</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <div class="select_sub">
+                        <ul class="sub">
+                            <li><a href="#nogo">News details 1</a></li>
+                            <li><a href="#nogo">News details 2</a></li>
+                            <li><a href="#nogo">News details 3</a></li>
+                        </ul>
+                    </div>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--  start nav -->
+
+    </div>
+    <div class="clear"></div>
+    <!--  start nav-outer -->
+</div>
+<!--  start nav-outer-repeat................................................... END -->
+
+<div class="clear"></div>
+
+<!-- start content-outer ........................................................................................................................START -->
+<div id="content-outer">
+    <!-- start content -->
+    <div id="content">
+
+        <!--  start page-heading -->
+        <div id="page-heading">
+            <h1>Online Quiz 1</h1>
+        </div>
+        <!-- end page-heading -->
+
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+            <tr>
+                <th rowspan="3" class="sized"><img src="app/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                <th class="topleft"></th>
+                <td id="tbl-border-top">&nbsp;</td>
+                <th class="topright"></th>
+                <th rowspan="3" class="sized"><img src="app/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+            </tr>
+            <tr>
+                <td id="tbl-border-left"></td>
+                <td>
+                    <!--  start content-table-inner ...................................................................... START -->
+                    <div id="content-table-inner">
+
+                        <!--  start table-content  -->
+                        <div id="table-content">
+
+                            <!--  start message-green -->
+                            <div id="message-green" *ngIf="message_green">
+                                <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="green-left">User added sucessfully. <a [routerLink]="['/user/create']">Add new one.</a></td>
+                                        <td class="green-right"><a class="close-green"><img src="app/images/table/icon_close_green.gif" alt="" /></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <form method="post" id="quiz">
+
+                                <ol>
+                                    <div style="position:relative; margin-right:200px" id="quiz-left">
+                                        <li>
+                                            <h4>CSS Stands for...</h4>
+                                            <div>
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
+                                                <label for="question-1-answers-A">A) Computer Styled Sections </label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" />
+                                                <label for="question-1-answers-B">B) Cascading Style Sheets</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" />
+                                                <label for="question-1-answers-C">C) Crazy Solid Shapes</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" />
+                                                <label for="question-1-answers-D">D) None of the above</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>Internet Explorer 6 was released in...</h4>
+                                            <div>
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
+                                                <label for="question-2-answers-A">A) 2001</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" />
+                                                <label for="question-2-answers-B">B) 1998</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" />
+                                                <label for="question-2-answers-C">C) 2006</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" />
+                                                <label for="question-2-answers-D">D) 2003</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>Your favorite website is</h4>
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
+                                                <label for="question-3-answers-A">A) CSS-Tricks</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" />
+                                                <label for="question-3-answers-B">B) CSS-Tricks</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" />
+                                                <label for="question-3-answers-C">C) CSS-Tricks</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" />
+                                                <label for="question-3-answers-D">D) CSS-Tricks</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>What type of program do you use to type a letter?</h4>
+                                            <div>
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
+                                                <label for="question-4-answers-A">A) Database</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" />
+                                                <label for="question-4-answers-B">B) Word Processor</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" />
+                                                <label for="question-4-answers-C">C) Spreadsheet</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" />
+                                                <label for="question-4-answers-D">D) Paint</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>What type of webpage is used to look up information?</h4>
+                                            <div>
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" />
+                                                <label for="question-5-answers-A">A) Game</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" />
+                                                <label for="question-5-answers-B">B) Search Engine</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" />
+                                                <label for="question-5-answers-C">C) YouTube</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" />
+                                                <label for="question-5-answers-D">D) Online Store</label>
+                                            </div>
+                                        </li>
+
+
+                                    </div>
+
+                                    <div style="position:relative; width:900px">
+                                        <li>
+                                            <h4>SEO Stand for...</h4>
+                                            <div>
+                                                <input type="radio" name="question-6-answers" id="question-6-answers-A" value="A" />
+                                                <label for="question-6-answers-A">A) Secret Enterprise Organizations</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-B" value="B" />
+                                                <label for="question-6-answers-B">B) Special Endowment Opportunity</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-C" value="C" />
+                                                <label for="question-6-answers-C">C) Search Engine Optimization</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-D" value="D" />
+                                                <label for="question-6-answers-D">D) Seals End Olives</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>A 404 Error...</h4>
+                                            <div>
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-A" value="A" />
+                                                <label for="question-7-answers-A">A) is an HTTP Status Code meaning Page Not Found</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-B" value="B" />
+                                                <label for="question-7-answers-B">B) is a good excuse for a clever design</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-C" value="C" />
+                                                <label for="question-7-answers-C">C) should be monitored for in web analytics</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-D" value="D" />
+                                                <label for="question-7-answers-D">D) All of the above</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>What device is used to input text into the computer?</h4>
+                                            <div>
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-A" value="A" />
+                                                <label for="question-8-answers-A">A) Printer</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-B" value="B" />
+                                                <label for="question-8-answers-B">B) Keyboard</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-C" value="C" />
+                                                <label for="question-8-answers-C">C) Mouse</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-D" value="D" />
+                                                <label for="question-8-answers-D">D) Flash Drive</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>What device displays the computer icons?</h4>
+                                            <div>
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-A" value="A" />
+                                                <label for="question-9-answers-A">A) Printer</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-B" value="B" />
+                                                <label for="question-9-answers-B">B) Floppy Disk</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-C" value="C" />
+                                                <label for="question-9-answers-C">C) Monitor</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-D" value="D" />
+                                                <label for="question-9-answers-D">D) Flash Drive</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <h4>What Microsoft program do you use to create a slideshow or presentation?</h4>
+                                            <div>
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-A" value="A" />
+                                                <label for="question-10-answers-A">A) Excel</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-B" value="B" />
+                                                <label for="question-10-answers-B">B) PowerPoint</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-C" value="C" />
+                                                <label for="question-10-answers-C">C) Word</label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-D" value="D" />
+                                                <label for="question-10-answers-D">D) Publisher</label>
+                                            </div>
+                                        </li>
+                                    </div>
+
+
+                                </ol>
+
+                                <input type="submit" value="Submit Quiz" class="form-submit" />
+
+                            </form>
+
+                            <!--  start product-table ..................................................................................... -->
+                            <form id="mainform" action="">
+
+                                <!--  end product-table................................... -->
+                            </form>
+                        </div>
+                        <!--  end content-table  -->
+
+
+                        <div class="clear"></div>
+
+                    </div>
+                    <!--  end content-table-inner ............................................END  -->
+                </td>
+                <td id="tbl-border-right"></td>
+            </tr>
+            <tr>
+                <th class="sized bottomleft"></th>
+                <td id="tbl-border-bottom">&nbsp;</td>
+                <th class="sized bottomright"></th>
+            </tr>
+        </table>
+
+        <div class="clear">&nbsp;</div>
+
+    </div>
+    <!--  end content -->
+    <div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer........................................................END -->
+
+<div class="clear">&nbsp;</div>
+
+<!-- start footer -->
+<div id="footer">
+    <!--  start footer-left -->
+    <div id="footer-left">
+
+        Admin Skin &copy; Copyright Internet Dreams Ltd. <span id="spanYear"></span> <a href="">www.netdreams.co.uk</a>. All rights reserved.</div>
+    <!--  end footer-left -->
+    <div class="clear">&nbsp;</div>
+</div>
+<!-- end footer -->
+
+</body>
+</html>
