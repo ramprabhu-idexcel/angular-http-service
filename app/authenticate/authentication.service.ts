@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import { Config } from 'app/config/config';
 /*
@@ -57,5 +57,14 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+    }
+
+    /*
+     * Url Hit Count
+     */
+    getHitCount(): Observable{
+        let serviceUrl = this.apiURL+"/api/hit-count";
+        return Observable.interval(60000)
+            .flatMap(() => this._http.get(serviceUrl));
     }
 }

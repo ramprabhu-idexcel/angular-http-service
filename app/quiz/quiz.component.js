@@ -18,6 +18,42 @@ var QuizComponent = (function () {
     function QuizComponent() {
         this.showQuiz = true;
     }
+    QuizComponent.prototype.OnChange = function (question, answer) {
+        switch (question) {
+            case 'question1':
+                this.question1 = answer;
+                break;
+            case 'question2':
+                this.question2 = answer;
+                break;
+            case 'question3':
+                this.question3 = answer;
+                break;
+            case 'question4':
+                this.question4 = answer;
+                break;
+            case 'question5':
+                this.question5 = answer;
+                break;
+            case 'question6':
+                this.question6 = answer;
+                break;
+            case 'question7':
+                this.question7 = answer;
+                break;
+            case 'question8':
+                this.question8 = answer;
+                break;
+            case 'question9':
+                this.question9 = answer;
+                break;
+            case 'question10':
+                this.question10 = answer;
+                break;
+        }
+    };
+    QuizComponent.prototype.OnSubmit = function () {
+    };
     return QuizComponent;
 }());
 QuizComponent = __decorate([

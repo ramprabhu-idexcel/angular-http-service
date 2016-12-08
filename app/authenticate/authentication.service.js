@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 var config_1 = require("app/config/config");
 /*
@@ -59,6 +60,15 @@ var AuthenticationService = (function () {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+    };
+    /*
+     * Url Hit Count
+     */
+    AuthenticationService.prototype.getHitCount = function () {
+        var _this = this;
+        var serviceUrl = this.apiURL + "/api/hit-count";
+        return Observable_1.Observable.interval(60000)
+            .flatMap(function () { return _this._http.get(serviceUrl); });
     };
     return AuthenticationService;
 }());

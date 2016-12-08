@@ -23,6 +23,7 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
         // reset login status
         this._authService.logout();
+        this.hitCount();
     };
     /*
      * Set user name
@@ -71,6 +72,18 @@ var LoginComponent = (function () {
         if (event.keyCode == 13) {
             this.OnSubmit();
         }
+    };
+    /*
+     * Trace IP address
+     */
+    LoginComponent.prototype.hitCount = function () {
+        var _this = this;
+        this._authService.getHitCount()
+            .subscribe(function (result) {
+            if (result) {
+                _this.ipCount = result.json().ipaddress_count;
+            }
+        });
     };
     return LoginComponent;
 }());

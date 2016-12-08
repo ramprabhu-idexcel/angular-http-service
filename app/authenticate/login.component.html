@@ -6,6 +6,10 @@
 </head>
 <body id="login-bg">
 
+<div id="counter" *ngIf="ipCount">
+    There are<br /><span>{{ ipCount }}</span><br />hits this month
+</div>
+
 <!-- Start: login-holder -->
 <div id="login-holder">
 
@@ -22,6 +26,7 @@
 
         <!--  start login-inner -->
         <div id="login-inner">
+
             <div id="login-error">
                 <div *ngIf="error" class="alert alert-danger" style="color: red">{{error}}</div>
             </div>

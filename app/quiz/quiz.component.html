@@ -17,26 +17,6 @@
         </div>
         <!-- end logo -->
 
-        <!--  start top-search -->
-        <div id="top-search">
-            <table border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td><input type="text" value="Search" onblur="if (this.value=='') { this.value='Search'; }" onfocus="if (this.value=='Search') { this.value=''; }" class="top-search-inp" /></td>
-                    <td>
-                        <select  class="styledselect">
-                            <option value=""> All</option>
-                            <option value=""> Users</option>
-                            <option value=""> Categories</option>
-                            <option value="">Clients</option>
-                            <option value="">News</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="image" src="app/images/shared/top_search_btn.gif"  />
-                    </td>
-                </tr>
-            </table>
-        </div>
         <!--  end top-search -->
         <div class="clear"></div>
 
@@ -223,22 +203,22 @@
                                         <li>
                                             <h4>CSS Stands for...</h4>
                                             <div>
-                                                <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" #option1 (click)="OnChange('question1', option1.value)" />
                                                 <label for="question-1-answers-A">A) Computer Styled Sections </label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" />
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" #option2 (click)="OnChange('question1', option2.value)" />
                                                 <label for="question-1-answers-B">B) Cascading Style Sheets</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" />
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" #option3 (click)="OnChange('question1', option3.value)" />
                                                 <label for="question-1-answers-C">C) Crazy Solid Shapes</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" />
+                                                <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" #option4 (click)="OnChange('question1', option4.value)" />
                                                 <label for="question-1-answers-D">D) None of the above</label>
                                             </div>
                                         </li>
@@ -246,22 +226,22 @@
                                         <li>
                                             <h4>Internet Explorer 6 was released in...</h4>
                                             <div>
-                                                <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" #option5 (click)="OnChange('question2', option5.value)" />
                                                 <label for="question-2-answers-A">A) 2001</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" />
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" #option6 (click)="OnChange('question2', option6.value)" />
                                                 <label for="question-2-answers-B">B) 1998</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" />
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" #option7 (click)="OnChange('question2', option7.value)" />
                                                 <label for="question-2-answers-C">C) 2006</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" />
+                                                <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" #option8 (click)="OnChange('question2', option8.value)" />
                                                 <label for="question-2-answers-D">D) 2003</label>
                                             </div>
                                         </li>
@@ -269,22 +249,22 @@
                                         <li>
                                             <h4>Your favorite website is</h4>
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" #option9 (click)="OnChange('question3', option9.value)"/>
                                                 <label for="question-3-answers-A">A) CSS-Tricks</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" />
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" #option10 (click)="OnChange('question3', option10.value)"/>
                                                 <label for="question-3-answers-B">B) CSS-Tricks</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" />
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" #option11 (click)="OnChange('question3', option11.value)"/>
                                                 <label for="question-3-answers-C">C) CSS-Tricks</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" />
+                                                <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" #option12 (click)="OnChange('question3', option12.value)"/>
                                                 <label for="question-3-answers-D">D) CSS-Tricks</label>
                                             </div>
                                         </li>
@@ -292,22 +272,22 @@
                                         <li>
                                             <h4>What type of program do you use to type a letter?</h4>
                                             <div>
-                                                <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" #option13 (click)="OnChange('question4', option13.value)"/>
                                                 <label for="question-4-answers-A">A) Database</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" />
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" #option14 (click)="OnChange('question4', option14.value)"/>
                                                 <label for="question-4-answers-B">B) Word Processor</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" />
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" #option15 (click)="OnChange('question4', option15.value)"/>
                                                 <label for="question-4-answers-C">C) Spreadsheet</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" />
+                                                <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" #option16 (click)="OnChange('question4', option16.value)"/>
                                                 <label for="question-4-answers-D">D) Paint</label>
                                             </div>
                                         </li>
@@ -315,22 +295,22 @@
                                         <li>
                                             <h4>What type of webpage is used to look up information?</h4>
                                             <div>
-                                                <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" />
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" #option17 (click)="OnChange('question5', option17.value)"/>
                                                 <label for="question-5-answers-A">A) Game</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" />
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" #option18 (click)="OnChange('question5', option18.value)"/>
                                                 <label for="question-5-answers-B">B) Search Engine</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" />
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" #option19 (click)="OnChange('question5', option19.value)"/>
                                                 <label for="question-5-answers-C">C) YouTube</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" />
+                                                <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" #option20 (click)="OnChange('question5', option20.value)"/>
                                                 <label for="question-5-answers-D">D) Online Store</label>
                                             </div>
                                         </li>
@@ -342,22 +322,22 @@
                                         <li>
                                             <h4>SEO Stand for...</h4>
                                             <div>
-                                                <input type="radio" name="question-6-answers" id="question-6-answers-A" value="A" />
+                                                <input type="radio" name="question-6-answers" id="question-6-answers-A" value="A" #option21 (click)="OnChange('question6', option21.value)"/>
                                                 <label for="question-6-answers-A">A) Secret Enterprise Organizations</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-6-answers-B" value="B" />
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-B" value="B" #option22 (click)="OnChange('question6', option22.value)"/>
                                                 <label for="question-6-answers-B">B) Special Endowment Opportunity</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-6-answers-C" value="C" />
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-C" value="C" #option23 (click)="OnChange('question6', option23.value)"/>
                                                 <label for="question-6-answers-C">C) Search Engine Optimization</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-3-answers" id="question-6-answers-D" value="D" />
+                                                <input type="radio" name="question-3-answers" id="question-6-answers-D" value="D" #option24 (click)="OnChange('question6', option24.value)"/>
                                                 <label for="question-6-answers-D">D) Seals End Olives</label>
                                             </div>
                                         </li>
@@ -365,22 +345,22 @@
                                         <li>
                                             <h4>A 404 Error...</h4>
                                             <div>
-                                                <input type="radio" name="question-7-answers" id="question-7-answers-A" value="A" />
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-A" value="A" #option25 (click)="OnChange('question7', option25.value)" />
                                                 <label for="question-7-answers-A">A) is an HTTP Status Code meaning Page Not Found</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-7-answers" id="question-7-answers-B" value="B" />
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-B" value="B" #option26 (click)="OnChange('question7', option26.value)"/>
                                                 <label for="question-7-answers-B">B) is a good excuse for a clever design</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-7-answers" id="question-7-answers-C" value="C" />
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-C" value="C" #option27 (click)="OnChange('question7', option27.value)"/>
                                                 <label for="question-7-answers-C">C) should be monitored for in web analytics</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-7-answers" id="question-7-answers-D" value="D" />
+                                                <input type="radio" name="question-7-answers" id="question-7-answers-D" value="D" #option28 (click)="OnChange('question7', option28.value)"/>
                                                 <label for="question-7-answers-D">D) All of the above</label>
                                             </div>
                                         </li>
@@ -388,22 +368,22 @@
                                         <li>
                                             <h4>What device is used to input text into the computer?</h4>
                                             <div>
-                                                <input type="radio" name="question-8-answers" id="question-8-answers-A" value="A" />
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-A" value="A" #option29 (click)="OnChange('question8', option29.value)"/>
                                                 <label for="question-8-answers-A">A) Printer</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-8-answers" id="question-8-answers-B" value="B" />
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-B" value="B" #option30 (click)="OnChange('question8', option30.value)"/>
                                                 <label for="question-8-answers-B">B) Keyboard</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-8-answers" id="question-8-answers-C" value="C" />
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-C" value="C" #option31 (click)="OnChange('question8', option31.value)"/>
                                                 <label for="question-8-answers-C">C) Mouse</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-8-answers" id="question-8-answers-D" value="D" />
+                                                <input type="radio" name="question-8-answers" id="question-8-answers-D" value="D" #option32 (click)="OnChange('question8', option32.value)"/>
                                                 <label for="question-8-answers-D">D) Flash Drive</label>
                                             </div>
                                         </li>
@@ -411,22 +391,22 @@
                                         <li>
                                             <h4>What device displays the computer icons?</h4>
                                             <div>
-                                                <input type="radio" name="question-9-answers" id="question-9-answers-A" value="A" />
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-A" value="A" #option33 (click)="OnChange('question9', option33.value)"/>
                                                 <label for="question-9-answers-A">A) Printer</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-9-answers" id="question-9-answers-B" value="B" />
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-B" value="B" #option34 (click)="OnChange('question9', option34.value)"/>
                                                 <label for="question-9-answers-B">B) Floppy Disk</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-9-answers" id="question-9-answers-C" value="C" />
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-C" value="C" #option35 (click)="OnChange('question9', option35.value)"/>
                                                 <label for="question-9-answers-C">C) Monitor</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-9-answers" id="question-9-answers-D" value="D" />
+                                                <input type="radio" name="question-9-answers" id="question-9-answers-D" value="D" #option36 (click)="OnChange('question9', option36.value)"/>
                                                 <label for="question-9-answers-D">D) Flash Drive</label>
                                             </div>
                                         </li>
@@ -434,22 +414,22 @@
                                         <li>
                                             <h4>What Microsoft program do you use to create a slideshow or presentation?</h4>
                                             <div>
-                                                <input type="radio" name="question-10-answers" id="question-10-answers-A" value="A" />
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-A" value="A" #option37 (click)="OnChange('question10', option37.value)"/>
                                                 <label for="question-10-answers-A">A) Excel</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-10-answers" id="question-10-answers-B" value="B" />
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-B" value="B" #option38 (click)="OnChange('question10', option38.value)"/>
                                                 <label for="question-10-answers-B">B) PowerPoint</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-10-answers" id="question-10-answers-C" value="C" />
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-C" value="C" #option39 (click)="OnChange('question10', option39.value)"/>
                                                 <label for="question-10-answers-C">C) Word</label>
                                             </div>
 
                                             <div>
-                                                <input type="radio" name="question-10-answers" id="question-10-answers-D" value="D" />
+                                                <input type="radio" name="question-10-answers" id="question-10-answers-D" value="D" #option40 (click)="OnChange('question10', option40.value)"/>
                                                 <label for="question-10-answers-D">D) Publisher</label>
                                             </div>
                                         </li>
@@ -458,7 +438,7 @@
 
                                 </ol>
 
-                                <input type="submit" value="Submit Quiz" class="form-submit" />
+                                <input type="submit" value="Submit Quiz" class="form-submit" (click)="OnSubmit()" />
 
                             </form>
 

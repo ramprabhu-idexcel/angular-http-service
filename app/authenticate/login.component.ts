@@ -17,10 +17,12 @@ export class LoginComponent implements OnInit{
     private password: string;
     loading = false;
     error = '';
+    public ipCount: string;
 
     ngOnInit() {
         // reset login status
         this._authService.logout();
+        this.hitCount();
     }
 
     /*
@@ -72,5 +74,17 @@ export class LoginComponent implements OnInit{
         if(event.keyCode == 13) {
             this.OnSubmit();
         }
+    }
+
+    /*
+     * Trace IP address
+     */
+    hitCount(){
+        this._authService.getHitCount()
+            .subscribe(result => {
+                if(result){
+                    this.ipCount = result.json().ipaddress_count;
+                }
+            });
     }
 }
