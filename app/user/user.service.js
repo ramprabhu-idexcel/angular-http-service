@@ -45,6 +45,13 @@ var UserService = (function () {
         var serviceUrl = this.apiURL + '/api/users/delete_all';
         return this._http.post(serviceUrl, json).map(function (res) { return res.json(); });
     };
+    /*
+     * Users Ip Addresses
+     */
+    UserService.prototype.getIpAddress = function () {
+        var serviceUrl = this.apiURL + '/api/ipaddress/list';
+        return this._http.get(serviceUrl).map(function (res) { return res.json(); });
+    };
     return UserService;
 }());
 UserService = __decorate([

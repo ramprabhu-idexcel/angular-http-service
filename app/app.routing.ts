@@ -14,6 +14,8 @@ import { AuthGuard } from './_guards/index';
 
 import { QuizComponent } from './quiz/quiz.component';
 
+import { IpAddressComponent } from './user/ip-address.component';
+
 
 export const routes: RouterConfig = [
   { path: 'login',
@@ -45,6 +47,11 @@ export const routes: RouterConfig = [
   },
   { path: 'quiz',
     component: QuizComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ipaddress',
+    component: IpAddressComponent,
     canActivate: [AuthGuard]
   }
 ];

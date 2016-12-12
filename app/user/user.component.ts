@@ -180,4 +180,5 @@ export class UserComponent implements OnInit{
     downloadPdf(){
         $('#content-table').tableExport({type:'pdf',escape:'false'});
     }
+
 }

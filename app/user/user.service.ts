@@ -43,6 +43,14 @@ export class UserService {
         let serviceUrl = this.apiURL+'/api/users/delete_all';
         return this._http.post(serviceUrl, json).map((res:Response) => res.json());
     }
+
+    /*
+     * Users Ip Addresses
+     */
+    getIpAddress(){
+        let serviceUrl = this.apiURL+'/api/ipaddress/list';
+        return this._http.get(serviceUrl).map((res:Response) => res.json());
+    }
 }
 
 

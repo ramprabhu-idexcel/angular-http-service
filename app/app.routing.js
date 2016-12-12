@@ -7,6 +7,7 @@ var user_create_component_1 = require("./user/user-create.component");
 var login_component_1 = require("./authenticate/login.component");
 var index_1 = require("./_guards/index");
 var quiz_component_1 = require("./quiz/quiz.component");
+var ip_address_component_1 = require("./user/ip-address.component");
 exports.routes = [
     { path: 'login',
         component: login_component_1.LoginComponent
@@ -37,6 +38,11 @@ exports.routes = [
     },
     { path: 'quiz',
         component: quiz_component_1.QuizComponent,
+        canActivate: [index_1.AuthGuard]
+    },
+    {
+        path: 'ipaddress',
+        component: ip_address_component_1.IpAddressComponent,
         canActivate: [index_1.AuthGuard]
     }
 ];
