@@ -38,6 +38,7 @@ var QuizComponent = (function () {
      */
     QuizComponent.prototype.OnSubmit = function () {
         var _this = this;
+        $.blockUI();
         var type = "Computer";
         this._quizService.validate(type, this.evaluation)
             .subscribe(function (result) {
@@ -47,6 +48,7 @@ var QuizComponent = (function () {
                 _this.attempt = result.attempt;
                 _this.message_blue = true;
                 $("html, body").animate({ scrollTop: 0 }, 600);
+                $.unblockUI();
             }
         });
     };

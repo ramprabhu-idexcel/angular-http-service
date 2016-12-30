@@ -50,6 +50,7 @@ export class QuizComponent implements OnInit{
      * On submit button
      */
     OnSubmit(){
+        $.blockUI();
         var type = "Computer";
         this._quizService.validate(type, this.evaluation)
             .subscribe(result => {
@@ -59,6 +60,7 @@ export class QuizComponent implements OnInit{
                     this.attempt = result.attempt;
                     this.message_blue = true;
                     $("html, body").animate({ scrollTop: 0 }, 600);
+                    $.unblockUI();
                 }
             });
     }
