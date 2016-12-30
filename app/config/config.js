@@ -27,11 +27,15 @@ var Config = (function () {
             _this.http.get('app/config/' + env_data.env + '.json')
                 .map(function (res) { return res.json(); })
                 .catch(function (error) {
-                console.error(error);
                 return Observable_1.Observable.throw(error.json().error || 'Server error');
             })
                 .subscribe(function (data) {
                 _this._config = data;
+                _this.http.get('app/config/quiz.json')
+                    .map(function (res) { return res.json(); })
+                    .subscribe(function (quiz_data) {
+                    _this._quizConfig = quiz_data;
+                });
             });
         });
         return Promise.resolve(this._config);
@@ -41,6 +45,12 @@ var Config = (function () {
      */
     Config.prototype.get = function (key) {
         return this._config[key];
+    };
+    /*
+     * Quiz details
+     */
+    Config.prototype.quizDetails = function () {
+        return this._quizConfig;
     };
     return Config;
 }());

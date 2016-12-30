@@ -72,6 +72,4 @@ export class IpAddressComponent implements OnInit{
         $('#content-table').tableExport({type:'pdf',escape:'false'});
     }
 
-
-
 }

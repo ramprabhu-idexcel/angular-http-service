@@ -12,6 +12,8 @@ import { AuthGuard } from './_guards/index';
 
 import { AuthenticationService } from './authenticate/authentication.service';
 
+import { QuizService } from './quiz/quiz.service';
+
 import { Config } from './config/config';
 
 import { HttpClient } from 'app/config/http-client';
@@ -27,6 +29,7 @@ bootstrap(AppComponent, [
     DemoService,
     UserService,
     AuthenticationService,
+    QuizService,
     AuthGuard,
     Config,
     HttpClient,

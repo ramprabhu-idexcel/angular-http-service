@@ -6,6 +6,7 @@ var demo_service_1 = require("./home/demo.service");
 var user_service_1 = require("./user/user.service");
 var index_1 = require("./_guards/index");
 var authentication_service_1 = require("./authenticate/authentication.service");
+var quiz_service_1 = require("./quiz/quiz.service");
 var config_1 = require("./config/config");
 var http_client_1 = require("app/config/http-client");
 var core_1 = require("@angular/core");
@@ -16,6 +17,7 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     demo_service_1.DemoService,
     user_service_1.UserService,
     authentication_service_1.AuthenticationService,
+    quiz_service_1.QuizService,
     index_1.AuthGuard,
     config_1.Config,
     http_client_1.HttpClient,

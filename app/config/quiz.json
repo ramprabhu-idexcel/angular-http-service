@@ -1,0 +1,42 @@
+[
+  {
+  "name": "CSS Stands for",
+  "answers": ["Computer Styled Sections","Cascading Style Sheets", "Crazy Solid Shapes", "None of the above"]
+  },
+  {
+    "name": "Internet Explorer 6 was released in",
+    "answers": ["2001", "1998", "2006", "2003"]
+  },
+  {
+    "name": "Your favorite website is",
+    "answers": ["CSS-Tricks", "MSS-Tricks", "LSS-Tricks", "PSS-Tricks"]
+  },
+  {
+    "name": "What type of program do you use to type a letter?",
+    "answers": ["Database", "Word Processor", "Spreadsheet", "Paint"]
+  },
+  {
+    "name": "What type of webpage is used to look up information?",
+    "answers": ["Game", "Search Engine", "YouTube", "Online Store"]
+  },
+  {
+    "name": "SEO Stand for",
+    "answers": ["Secret Enterprise Organizations", "Special Endowment Opportunity", "Search Engine Optimization", "Seals End Olives"]
+  },
+  {
+    "name": "A 404 Error",
+    "answers": ["is an HTTP Status Code meaning Page Not Found", "is a good excuse for a clever design", "should be monitored for in web analytics", "All of the above"]
+  },
+  {
+    "name": "What device is used to input text into the computer?",
+    "answers": ["Printer", "Keyboard", "Mouse", "Flash Drive"]
+  },
+  {
+    "name": "What device displays the computer icons?",
+    "answers":  ["Printer", "Floppy Disk", "Monitor", "Flash Drive"] },
+  {
+    "name": "What Microsoft program do you use to create a slideshow or presentation?",
+    "answers": ["Excel", "PowerPoint", "Word", "Publisher"]
+  }
+]
+
