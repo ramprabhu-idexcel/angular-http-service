@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
+/*
+ * Http client
+ */
+import { HttpClient } from './http-client';
 
 @Injectable()
 export class Config {
@@ -8,7 +12,7 @@ export class Config {
     private _env: string;
     private _quizConfig;
 
-    constructor(private http: Http) {  }
+    constructor(private http:HttpClient) {  }
 
     /*
      * Load configuration files
@@ -24,11 +28,6 @@ export class Config {
                        return Observable.throw(error.json().error || 'Server error'); })
                         .subscribe((data) => {
                             this._config = data;
-                            this.http.get('app/config/quiz.json')
-                                 .map(res => res.json())
-                                .subscribe((quiz_data) => {
-                                    this._quizConfig = quiz_data;
-                                });
                         });
                 });
         return Promise.resolve(this._config);
@@ -39,13 +38,6 @@ export class Config {
      */
     get(key: any) {
         return this._config[key];
-    }
-
-    /*
-     * Quiz details
-     */
-    quizDetails(){
-        return this._quizConfig;
     }
 
 }

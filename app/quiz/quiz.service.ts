@@ -34,4 +34,12 @@ export class QuizService {
         let data = JSON.stringify({"quiz": { type: type, obj: obj, user_id: this.user_id }});
         return this._http.post(serviceUrl, data).map((res:Response) => res.json());
     }
+
+    /*
+     * Load quiz questions
+     */
+    getQuestions(){
+        let serviceUrl = this.apiURL+'/api/quizzes/computer';
+        return this._http.get(serviceUrl).map((res:Response) => res.json());
+    }
 }

@@ -36,6 +36,13 @@ var QuizService = (function () {
         var data = JSON.stringify({ "quiz": { type: type, obj: obj, user_id: this.user_id } });
         return this._http.post(serviceUrl, data).map(function (res) { return res.json(); });
     };
+    /*
+     * Load quiz questions
+     */
+    QuizService.prototype.getQuestions = function () {
+        var serviceUrl = this.apiURL + '/api/quizzes/computer';
+        return this._http.get(serviceUrl).map(function (res) { return res.json(); });
+    };
     return QuizService;
 }());
 QuizService = __decorate([

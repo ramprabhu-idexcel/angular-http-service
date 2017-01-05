@@ -15,17 +15,15 @@ var router_1 = require("@angular/router");
 var ng2_pagination_1 = require("ng2-pagination");
 var order_by_1 = require("app/sorting/order.by");
 var quiz_service_1 = require("./quiz.service");
-var config_1 = require("app/config/config");
 var QuizComponent = (function () {
-    function QuizComponent(_quizService, _router, _config) {
+    function QuizComponent(_quizService, _router) {
         this._quizService = _quizService;
         this._router = _router;
-        this._config = _config;
         this.showQuiz = true;
         this.evaluation = {};
         this.message_green = false;
         this.message_blue = false;
-        this.questions = this._config.quizDetails();
+        this.LoadQuestions();
     }
     /*
      * On changing radio button
@@ -52,6 +50,18 @@ var QuizComponent = (function () {
             }
         });
     };
+    /*
+     * Load all quiz question with options
+     */
+    QuizComponent.prototype.LoadQuestions = function () {
+        var _this = this;
+        this._quizService.getQuestions()
+            .subscribe(function (result) {
+            if (result) {
+                _this.questions = result;
+            }
+        });
+    };
     return QuizComponent;
 }());
 QuizComponent = __decorate([
@@ -62,8 +72,7 @@ QuizComponent = __decorate([
         directives: [forms_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, ng2_pagination_1.PaginationControlsCmp],
         providers: [ng2_pagination_1.PaginationService]
     }),
-    __metadata("design:paramtypes", [quiz_service_1.QuizService, router_1.Router, typeof (_a = typeof config_1.Config !== "undefined" && config_1.Config) === "function" && _a || Object])
+    __metadata("design:paramtypes", [quiz_service_1.QuizService, router_1.Router])
 ], QuizComponent);
 exports.QuizComponent = QuizComponent;
-var _a;
 //# sourceMappingURL=quiz.component.js.map

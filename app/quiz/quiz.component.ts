@@ -16,7 +16,6 @@ import { OrderBy } from 'app/sorting/order.by';
  */
 import { CsvReportComponent } from '../reports/csv-report.component';
 import { QuizService } from './quiz.service';
-import { Config } from 'app/config/config';
 
 @Component({
     templateUrl: 'app/quiz/quiz.component.html',
@@ -27,7 +26,8 @@ import { Config } from 'app/config/config';
 })
 
 export class QuizComponent implements OnInit{
-    constructor(private _quizService: QuizService, private _router:Router, private _config:Config) {
+    constructor(private _quizService: QuizService, private _router:Router) {
+        this.LoadQuestions();
     }
 
     public showQuiz: boolean = true;
@@ -36,7 +36,7 @@ export class QuizComponent implements OnInit{
     public message_blue: boolean = false;
     public marks: string;
     public attempt: string;
-    public questions: Array<any> = this._config.quizDetails();
+    public questions: Array<any>;
 
 
     /*
@@ -61,6 +61,18 @@ export class QuizComponent implements OnInit{
                     this.message_blue = true;
                     $("html, body").animate({ scrollTop: 0 }, 600);
                     $.unblockUI();
+                }
+            });
+    }
+
+    /*
+     * Load all quiz question with options
+     */
+    LoadQuestions(){
+        this._quizService.getQuestions()
+            .subscribe(result => {
+                if(result){
+                    this.questions = result;
                 }
             });
     }
