@@ -27,6 +27,9 @@ import { QuizService } from './quiz.service';
 
 export class QuizComponent implements OnInit{
     constructor(private _quizService: QuizService, private _router:Router) {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
+        this.user_id = currentUser && currentUser.user_id;
         this.LoadQuestions();
     }
 
@@ -37,7 +40,8 @@ export class QuizComponent implements OnInit{
     public marks: string;
     public attempt: string;
     public questions: Array<any>;
-
+    public Name: string;
+    public user_id: string;
 
     /*
      * On changing radio button
@@ -52,7 +56,7 @@ export class QuizComponent implements OnInit{
     OnSubmit(){
         $.blockUI();
         var type = "Computer";
-        this._quizService.validate(type, this.evaluation)
+        this._quizService.validate(type, this.evaluation, this.user_id)
             .subscribe(result => {
                 if(result){
                     this.message_green = true;

@@ -15,6 +15,15 @@
 		<div id="logo">
 			<a href=""><img src="app/images/shared/logo.png" width="156" height="40" alt="" /></a>
 		</div>
+
+		<div id="top-search">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td style="color: blue">Welcome: {{ Name }}</td>
+				</tr>
+			</table>
+		</div>
+
 		<!-- end logo -->
 
 		<div class="clear"></div>
@@ -34,9 +43,10 @@
 
 		<!-- start nav-right -->
 		<div id="nav-right">
-
 			<div class="nav-divider">&nbsp;</div>
-			<div class="showhide-account"><img src="app/images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
+			<div class="showhide-account">
+				<img src="app/images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
+			</div>
 			<div class="nav-divider">&nbsp;</div>
 			<a [routerLink]="['/login']" id="logout"><img src="app/images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>

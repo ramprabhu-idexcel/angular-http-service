@@ -12,7 +12,10 @@ import { UserService } from './user.service';
 })
 
 export class UserCreateComponent{
-    constructor(private _userService: UserService, private _router:Router) { }
+    constructor(private _userService: UserService, private _router:Router) {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
+    }
     public users: Array<any>;
     public editing: boolean = false;
     public viewUsers : boolean = true;
@@ -30,6 +33,7 @@ export class UserCreateComponent{
     private address: string;
     private phone: string;
     private jsonString;
+    public Name: string;
 
     /*
      * Submit form

@@ -40,11 +40,12 @@ var AuthenticationService = (function () {
             // login successful if there's a jwt token in the response
             var token = response.json() && response.json().token;
             var user_id = response.json() && response.json().user_id;
+            var name = response.json() && response.json().name;
             if (token) {
                 // set token property
                 _this.token = token;
                 // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, user_id: user_id }));
+                localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, user_id: user_id, name: name }));
                 // return true to indicate successful login
                 return true;
             }

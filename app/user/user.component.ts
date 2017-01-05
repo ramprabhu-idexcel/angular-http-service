@@ -31,6 +31,8 @@ export class UserComponent implements OnInit{
     sorter: Sorter;
     public showUsers: boolean = true;
 	constructor(private _userService: UserService) {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
         this.sorter = new Sorter();
     }
 	public users: Array<any>;
@@ -50,6 +52,7 @@ export class UserComponent implements OnInit{
 
     private user_ids: Array = [];
     public messageBlue: boolean = false;
+    public Name: string;
  
  	ngOnInit(){
  		this.getUsers();

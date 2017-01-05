@@ -22,7 +22,6 @@ var QuizService = (function () {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
-        this.user_id = currentUser && currentUser.user_id;
         /*
          * Backend server Url
          */
@@ -31,9 +30,9 @@ var QuizService = (function () {
     /*
      * create user session
      */
-    QuizService.prototype.validate = function (type, obj) {
+    QuizService.prototype.validate = function (type, obj, user_id) {
         var serviceUrl = this.apiURL + '/api/quizzes/validate';
-        var data = JSON.stringify({ "quiz": { type: type, obj: obj, user_id: this.user_id } });
+        var data = JSON.stringify({ "quiz": { type: type, obj: obj, user_id: user_id } });
         return this._http.post(serviceUrl, data).map(function (res) { return res.json(); });
     };
     /*

@@ -21,6 +21,8 @@ var UserCreateComponent = (function () {
         this.editing = false;
         this.viewUsers = true;
         this.addUser = false;
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
     }
     /*
      * Submit form

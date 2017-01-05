@@ -23,6 +23,9 @@ var QuizComponent = (function () {
         this.evaluation = {};
         this.message_green = false;
         this.message_blue = false;
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
+        this.user_id = currentUser && currentUser.user_id;
         this.LoadQuestions();
     }
     /*
@@ -38,7 +41,7 @@ var QuizComponent = (function () {
         var _this = this;
         $.blockUI();
         var type = "Computer";
-        this._quizService.validate(type, this.evaluation)
+        this._quizService.validate(type, this.evaluation, this.user_id)
             .subscribe(function (result) {
             if (result) {
                 _this.message_green = true;
@@ -55,10 +58,12 @@ var QuizComponent = (function () {
      */
     QuizComponent.prototype.LoadQuestions = function () {
         var _this = this;
+        $.blockUI();
         this._quizService.getQuestions()
             .subscribe(function (result) {
             if (result) {
                 _this.questions = result;
+                $.unblockUI();
             }
         });
     };

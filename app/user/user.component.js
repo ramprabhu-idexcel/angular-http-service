@@ -40,6 +40,8 @@ var UserComponent = (function () {
         };
         this.user_ids = [];
         this.messageBlue = false;
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.Name = currentUser && currentUser.name;
         this.sorter = new sorter_1.Sorter();
     }
     UserComponent.prototype.ngOnInit = function () {
