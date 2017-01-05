@@ -69,10 +69,12 @@ export class QuizComponent implements OnInit{
      * Load all quiz question with options
      */
     LoadQuestions(){
+        $.blockUI();
         this._quizService.getQuestions()
             .subscribe(result => {
                 if(result){
                     this.questions = result;
+                    $.unblockUI();
                 }
             });
     }
